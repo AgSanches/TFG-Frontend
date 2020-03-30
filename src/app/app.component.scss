@@ -2,12 +2,27 @@
 
 .navbar {
   background-color: $primary--color !important;
+
+  a {
+    color: white !important;
+    text-align: center;
+
+  }
 }
 
-.navbar a {
-  color: white !important;
-  text-align: center;
+@media (max-width: 768px) {
+    .nav-link {
+      padding: 0.3em;
+
+      &:hover {
+        transition: background-color 1s;
+        background-color: darken($primary--color, 50);
+      }
+
+    }
 }
+
+
 
 .footer {
   background-color: #4C4B80 !important;

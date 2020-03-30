@@ -1,1 +1,40 @@
-<p>login works!</p>
+<div class="container-fluid mt-4">
+
+  <div class="text-dark container user-form">
+
+    <div class="text-center mb-3">
+      <h2 class="mb-2">Iniciar Sesión</h2>
+    </div>
+
+    <p *ngIf="showMessage" [ngClass]="{'error-message': !formStatus, 'success-message': formStatus}">
+      {{formMessage}}
+    </p>
+
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+
+      <div class="form-group">
+        <input type="email" class="form-control" name="email" placeholder="Email" #email="ngModel"
+               [(ngModel)]="emailUser" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+               [class.error-input]="!email.valid && email.touched"
+        >
+        <p class="error-message" *ngIf="!email.valid && email.touched">
+          Introduce un email válido.
+        </p>
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="form-control" name="password" placeholder="Contraseña" #password="ngModel"
+               [(ngModel)]="passwordUser" required minlength="6"
+               [class.error-input]="!password.valid && password.touched">
+        <small id="passwordHelp" class="form-text text-muted">Utiliza mínimo 6 caracteres.</small>
+        <p class="error-message" *ngIf="(!password.valid && password.touched)">
+          Introduce una contraseña
+        </p>
+      </div>
+
+      <button class="button mr-md-2" [class.button-success]="loginForm.valid" [disabled]="!loginForm.valid">Iniciar Sesión</button>
+      <button class="button button-danger" (click)="goBack()">Volver</button>
+
+    </form>
+  </div>
+</div>

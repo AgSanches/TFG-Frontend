@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../models/User';
 import { UserService } from '../../services/user.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
   showMessage: boolean;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private location: Location
   ) {
     this.user = new User("", "", "", "");
   }
@@ -41,4 +43,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  goBack() {
+    this.location.back();
+  }
 }

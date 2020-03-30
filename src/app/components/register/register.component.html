@@ -62,7 +62,7 @@
       </div>
 
       <button class="button mr-md-2" [class.button-success]="registerForm.valid" [disabled]="!registerForm.valid">Registrarse</button>
-      <button class="button button-danger">Cancelar</button>
+      <button class="button button-danger" (click)="goBack()">Volver</button>
 
     </form>
 
