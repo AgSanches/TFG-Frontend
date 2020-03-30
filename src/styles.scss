@@ -1,1 +1,91 @@
 /* You can add global styles to this file, and also import other style files */
+$primary--color: #4C4B80;
+
+$danger--color: #FF8282;
+$success--color: #91d7c3;
+
+.page-wrapper {
+  min-height: 95vh;
+}
+
+@mixin message-bg($bg) {
+  margin-top: 0.5em;
+  color: white;
+  padding: 0.8em;
+  background-color: $bg;
+  font-size: 0.9em;
+}
+
+.success-message {
+  @include message-bg($success--color);
+}
+
+.error-message {
+  @include message-bg($danger--color);
+}
+
+.error-input {
+  border: 1px solid $danger--color !important;
+  box-shadow: none;
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+/* ***************************************************************************
+   ***************************************************************************
+   **********************       Buttons            ***************************
+   ***************************************************************************
+   ***************************************************************************
+ */
+@mixin button-bg($bg) {
+  background: $bg;
+
+  &:hover {
+    -webkit-box-shadow: 5px 3px 0px 0px rgba(0,0,0,0.30);
+    -moz-box-shadow: 5px 3px 0px 0px rgba(0,0,0,0.30);
+    box-shadow: 5px 3px 0px 0px rgba(0,0,0,0.30);
+    background:darken($bg,8%);
+    transition: all 0.3s ease;
+    border: 1px solid black;
+  }
+
+  &:active {
+    background:darken($bg,25%);
+  }
+}
+
+.button {
+  padding: 0.7em;
+  border: none;
+  color: white;
+  text-align: center;
+  background-color: black;
+  font-size: 1em;
+}
+
+.button-success {
+  @include button-bg($success--color);
+}
+
+.button-danger {
+  @include button-bg($danger--color)
+}
+
+
+/* ***************************************************************************
+   ***************************************************************************
+   **********************       Buttons            ***************************
+   ***************************************************************************
+   ***************************************************************************
+ */
+
+@media(max-width: 768px) {
+  .button {
+    width: 100%;
+    margin-bottom: 0.3em;
+  }
+}
+
+
