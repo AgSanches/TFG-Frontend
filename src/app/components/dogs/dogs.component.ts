@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Dog} from '../../models/Dog';
+import {DogsService} from '../../services/dogs.service';
 
 @Component({
   selector: 'app-dogs',
@@ -7,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DogsComponent implements OnInit {
 
+  dogs: Array<Dog>;
+
   constructor(
+    private dogsService: DogsService
   ) { }
 
   ngOnInit(): void {
+    this.dogsService.getDogs().subscribe(
+      data => {
+      this.dogs = data;
+    }, error => {
+
+      })
   }
 
 }

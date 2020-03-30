@@ -58,6 +58,7 @@ $success--color: #91d7c3;
 
 .button {
   padding: 0.7em;
+  border-radius: 5px;
   border: none;
   color: white;
   text-align: center;
@@ -70,7 +71,12 @@ $success--color: #91d7c3;
 }
 
 .button-danger {
-  @include button-bg($danger--color)
+  @include button-bg($danger--color);
+}
+
+.button-white {
+  @include button-bg(#fff);
+  color: black;
 }
 
 

@@ -1,0 +1,11 @@
+<section class="dogSection">
+
+  <div class="row justify-content-start align-items-center mx-auto" *ngIf="dogs">
+
+    <app-dog-box *ngFor="let dog of dogs" [dog]="dog">
+    </app-dog-box>
+
+  </div>
+
+</section>
+
