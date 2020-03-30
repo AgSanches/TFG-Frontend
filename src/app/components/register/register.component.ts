@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../models/User';
 import { UserService } from '../../services/user.service';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
+import {AuthenticationService} from '../../services/authentication.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -18,12 +20,17 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private location: Location
+    private location: Location,
+    private authenticationService: AuthenticationService,
+    private route:Router
   ) {
-    this.user = new User("", "", "", "");
+    this.user = new User("", "", "", "", "", "");
   }
 
   ngOnInit(): void {
+    if(this.authenticationService.getCurrentUser()){
+      this.route.navigateByUrl('/');
+    }
   }
 
   onSubmit(registerForm: any) {

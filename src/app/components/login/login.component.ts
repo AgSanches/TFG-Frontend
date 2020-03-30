@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../services/user.service';
+import {AuthenticationService} from '../../services/authentication.service';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
 
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   showMessage: boolean;
 
   constructor(
-    private userService: UserService,
+    private authService: AuthenticationService,
     private location: Location,
     private route: Router,
   ) {
@@ -25,22 +25,16 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.authService.getCurrentUser()){
+      this.route.navigateByUrl('/');
+    }
   }
 
   onSubmit(loginForm: any) {
-    this.userService.login(this.emailUser, this.passwordUser).subscribe(
-      response => {
 
-        this.showMessage = true;
-        this.formStatus = true;
-        this.formMessage = "Datos correctos";
-        this.userService.log_user( response.name, response.surname, response.access_token, response.refresh_token
-        );
-
-        setTimeout(() => {
-          this.route.navigateByUrl('/');
-        }, 1000)
-
+    this.authService.login(this.emailUser, this.passwordUser).subscribe(
+      () => {
+        this.route.navigateByUrl('/');
       }, error => {
 
         this.showMessage = true;
@@ -54,6 +48,7 @@ export class LoginComponent implements OnInit {
 
       }
     );
+
   }
 
   goBack() {
