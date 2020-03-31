@@ -1,11 +1,7 @@
-<section class="dogSection">
+<div class="dogs d-flex" *ngIf="dogs">
 
-  <div class="row justify-content-start align-items-center mx-auto" *ngIf="dogs">
+  <app-dog-box class="dog-card" *ngFor="let dog of dogs" [dog]="dog">
 
-    <app-dog-box *ngFor="let dog of dogs" [dog]="dog">
-    </app-dog-box>
+  </app-dog-box>
 
-  </div>
-
-</section>
-
+</div>

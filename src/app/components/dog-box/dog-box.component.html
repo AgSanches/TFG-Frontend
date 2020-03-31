@@ -1,12 +1,9 @@
-<article class="pb-2 mainDog text-white" *ngIf="dog">
-  <div class="d-flex flex-column align-items-center justify-content-center">
-    <img src="{{getDogImage()}}" alt="" class="d-block w-100 mx-auto">
-    <div class="mt-2">
-      <h3 class="mb-0">
-        {{dog.name}}
-      </h3>
-      <small>{{dog.updated_at}}</small>
-      <a href="#" class="button button-white">Acceder perfil</a>
-    </div>
-  </div>
-</article>
+<div class="dog-image" >
+  <img src="{{getDogImage()}}" alt="">
+</div>
+
+<div class="dog-info">
+  <h3>{{dog.name}}</h3>
+  <small class="mb-5">{{dog.updated_at}}</small>
+  <a href="#" class="button button-white">Acceder</a>
+</div>
