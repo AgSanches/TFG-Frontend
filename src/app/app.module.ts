@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import {FormsModule} from '@angular/forms';
 import { DogBoxComponent } from './components/dog-box/dog-box.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { DogBoxComponent } from './components/dog-box/dog-box.component';
     RegisterComponent,
     LoginComponent,
     DogBoxComponent,
+    FilterComponent,
 
   ],
     imports: [

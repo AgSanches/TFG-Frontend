@@ -22,6 +22,12 @@ export class DogsService {
     }));
   }
 
+  getDogsByName(name:string): Observable<any>{
+    return this.http.get(url + "/dog/name/" + name).pipe(map((dog:Dog) => {
+      return dog;
+    }));
+  }
+
   getDog(){
     // TODO
   }

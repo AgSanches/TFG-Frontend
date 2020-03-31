@@ -16,12 +16,34 @@ export class DogsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dogsService.getDogs().subscribe(
-      data => {
-      this.dogs = data;
-    }, error => {
-
-      })
+    this.getAllDogs();
   }
 
+  getAllDogs(){
+    this.dogsService.getDogs().subscribe(
+      data => {
+        this.dogs = data;
+      }, error => {
+
+      });
+  }
+
+  searchDogs($event: string) {
+
+    if($event.length < 1){
+
+      this.getAllDogs();
+
+    } else {
+
+      this.dogsService.getDogsByName($event).subscribe(
+        data => {
+          this.dogs = data;
+        }, error => {
+          console.log(error)
+        });
+    }
+
+
+  }
 }

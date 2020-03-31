@@ -2,17 +2,17 @@
 
 .dogs {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
 .dog-card {
   margin: 2%;
-  flex: 0 1 21%;
+  flex: 0 1 16%;
   color: white;
   background-color: $primary--color;
   transition: transform 1s;
-  height: 17em;
+  height: 18em;
   border-radius: 5px;
 
   &:hover{
@@ -23,11 +23,21 @@
 
 }
 
-@media (min-width: 1920px ) {
+@media (min-width: 1700px ) {
 
   .dog-card {
     flex: 0 1 9%;
     margin: 1%;
+  }
+
+}
+
+
+@media (max-width: 1366px ) {
+
+  .dog-card {
+    flex: 0 1 21%;
+    margin: 2%;
   }
 
 }

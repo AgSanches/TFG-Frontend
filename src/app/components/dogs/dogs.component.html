@@ -1,7 +1,12 @@
-<div class="dogs d-flex" *ngIf="dogs">
 
-  <app-dog-box class="dog-card" *ngFor="let dog of dogs" [dog]="dog">
+<app-filter (filterEmitter)="searchDogs($event)">
 
-  </app-dog-box>
+</app-filter>
 
-</div>
+<section class="container-fluid">
+  <div class="dogs d-flex" *ngIf="dogs">
+    <app-dog-box class="dog-card" *ngFor="let dog of dogs" [dog]="dog">
+    </app-dog-box>
+  </div>
+</section>
+
