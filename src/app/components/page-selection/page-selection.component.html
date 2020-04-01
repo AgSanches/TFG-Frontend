@@ -1,0 +1,7 @@
+<div class="container text-center mt-2">
+  <div class="page-selection d-flex justify-content-center p-0">
+    <button class="page-selector col-2" *ngIf="currentPage > 1" (click)="changePage(-1)">&lt;</button>
+    <span class="col-2">{{currentPage}}</span>
+    <button class="page-selector col-2" *ngIf="hasNext" (click)="changePage(1)">&gt;</button>
+  </div>
+</div>

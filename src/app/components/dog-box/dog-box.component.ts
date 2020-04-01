@@ -24,4 +24,5 @@ export class DogBoxComponent implements OnInit {
   getDogImage() {
     return url + "/dog/image/" + this.dog.id;
   }
+
 }

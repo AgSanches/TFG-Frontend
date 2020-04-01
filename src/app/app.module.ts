@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRouting } from './app-routing/app-routing';
 import {RouterModule} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import {JwPaginationComponent} from 'jw-angular-pagination';
 
 import {UserService} from './services/user.service';
 
@@ -14,6 +15,8 @@ import { LoginComponent } from './components/login/login.component';
 import {FormsModule} from '@angular/forms';
 import { DogBoxComponent } from './components/dog-box/dog-box.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { PageSelectionComponent } from './components/page-selection/page-selection.component';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { FilterComponent } from './components/filter/filter.component';
     LoginComponent,
     DogBoxComponent,
     FilterComponent,
+    PageSelectionComponent,
 
   ],
     imports: [
@@ -30,7 +34,7 @@ import { FilterComponent } from './components/filter/filter.component';
         HttpClientModule,
         AppRouting,
         RouterModule,
-        FormsModule
+        FormsModule,
     ],
   providers: [
     UserService

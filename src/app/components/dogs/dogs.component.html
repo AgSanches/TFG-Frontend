@@ -1,12 +1,22 @@
-
 <app-filter (filterEmitter)="searchDogs($event)">
 
 </app-filter>
 
 <section class="container-fluid">
-  <div class="dogs d-flex" *ngIf="dogs">
-    <app-dog-box class="dog-card" *ngFor="let dog of dogs" [dog]="dog">
-    </app-dog-box>
+
+  <div class="alert alert-danger mt-5" *ngIf="!isSearching && dogs.length < 1">
+    No se han encontrado resultados
   </div>
+
+  <div *ngIf="!isSearching && dogs.length > 0">
+
+    <div class="dogs d-flex" >
+      <app-dog-box class="dog-card" *ngFor="let dog of dogs" [dog]="dog">
+      </app-dog-box>
+    </div>
+
+    <app-page-selection [pageSize]="limit" [itemsObservable]="dogsObservable" (currentPageEmitter)="sliceDogs($event)" ></app-page-selection>
+  </div>
+
 </section>
 

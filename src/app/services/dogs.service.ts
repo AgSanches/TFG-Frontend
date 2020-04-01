@@ -16,8 +16,8 @@ export class DogsService {
   ) {
   }
 
-  getDogs(): Observable<any>{
-    return this.http.get(url + "/dogs").pipe(map((dog:Dog) => {
+  getDogs(limit: number = 250, offset = 0, orderby = "updated_at", method="desc"): Observable<any>{
+    return this.http.get(url + `/dogs/${limit}/${orderby}/${method}/${offset}` ).pipe(map((dog:Dog) => {
       return dog;
     }));
   }
@@ -42,5 +42,9 @@ export class DogsService {
 
   deleteDog(){
     // TODO
+  }
+
+  getCountDogs():Observable<any> {
+    return this.http.get(url + '/count/dog');
   }
 }
