@@ -11,13 +11,17 @@ declare var $:any;
 export class FilterComponent implements OnInit, OnDestroy {
 
   @Output() filterEmitter = new EventEmitter<string>();
+  @Output() filterSortEmitter = new EventEmitter<Array<any>>();
   searchKeyUp: Observable<any>;
+  date: boolean = true;
+  asc: boolean = false;
 
   constructor() {
 
   }
 
   ngOnInit(): void {
+
     this.searchKeyUp = fromEvent( $('#searchKeyup'), 'keyup').pipe(
       map((e:any) => e.target.value),
       debounceTime(400),
@@ -31,5 +35,11 @@ export class FilterComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.searchKeyUp.subscribe();
+  }
+
+  sortBy(date: boolean, asc: boolean) {
+    this.date = date;
+    this.asc = asc;
+    this.filterSortEmitter.emit([date, asc]);
   }
 }

@@ -1,12 +1,40 @@
-<div class="w-100 bg-dark py-2 px-1 d-flex justify-content-around">
+<div class="w-100 bg-dark py-2 px-1 d-flex justify-content-around flex-wrap">
 
-  <input id="searchKeyup" type="text" class="form-control col-5" placeholder="Buscar...">
+  <input id="searchKeyup" type="text" class="form-control col-12 col-md-4" placeholder="Buscar...">
 
-  <select id="" class="form-control col-5" >
-    <option value="">Ordenar por</option>
-    <option value="date">Fecha</option>
-    <option value="name">Nombre</option>
+  <div class="col-12 col-md-7 d-flex filter-element justify-content-around text-center">
 
-  </select>
+    <span>
+      <i class="filtersort"
+         (click)="sortBy(true, true)"
+         [class.active]="date && asc"
+      >
+        <i class="fas fa-arrow-up"></i>
+      </i>
+      Fecha
+      <i class="filtersort"
+         (click)="sortBy(true, false)"
+         [class.active]="date && !asc"
+      >
+        <i class="fas fa-arrow-down"></i>
+      </i>
+    </span>
 
+    <span>
+      <i class="filtersort"
+         (click)="sortBy(false, true)"
+         [class.active]="!date && asc"
+      >
+        <i class="fas fa-arrow-up"></i>
+      </i>
+      Nombre
+      <i class="filtersort"
+         (click)="sortBy(false, false)"
+         [class.active]="!date && !asc"
+      >
+        <i class="fas fa-arrow-down"></i>
+      </i>
+    </span>
+
+  </div>
 </div>

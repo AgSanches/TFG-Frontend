@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Dog} from '../../models/Dog';
 import {DogsService} from '../../services/dogs.service';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {User} from '../../models/User';
+import {SortService} from '../../services/sort.service';
 
 @Component({
   selector: 'app-dogs',
@@ -17,8 +17,13 @@ export class DogsComponent implements OnInit {
   limit: number;
   isSearching: boolean;
 
+  asc: boolean;
+  date: boolean;
+
+
   constructor(
-    private dogsService: DogsService
+    private dogsService: DogsService,
+    private sortService: SortService
   ) {
     this.dogsSource = new BehaviorSubject<Array<Dog>>([]);
     this.dogsObservable = this.dogsSource.asObservable();
@@ -37,7 +42,9 @@ export class DogsComponent implements OnInit {
   }
 
   getAllDogs(){
+
     this.isSearching = true;
+
     this.dogsService.getDogs().subscribe(
       data => {
         this.dogsSource.next(data);
@@ -67,5 +74,13 @@ export class DogsComponent implements OnInit {
 
   sliceDogs($event: Array<Dog>) {
     this.dogs = $event;
+  }
+
+
+  sortDogs($event: Array<any>) {
+    this.date = $event[0];
+    this.asc = $event[1];
+    let data = this.sortService.sort(this.dogsSource.value, this.date, this.asc);
+    this.dogsSource.next(data);
   }
 }
