@@ -1,12 +1,11 @@
 <app-filter
   (filterEmitter)="searchDogs($event)"
   (filterSortEmitter)="sortDogs($event)"
-
->
-
-</app-filter>
+> </app-filter>
 
 <section class="container-fluid">
+
+  <button class="button button-success mt-3" routerLink="/caninos/crear">Añadir canino</button>
 
   <div class="alert alert-danger mt-5" *ngIf="!isSearching && dogs.length < 1">
     No se han encontrado resultados
@@ -22,5 +21,6 @@
     <app-page-selection [pageSize]="limit" [itemsObservable]="dogsObservable" (currentPageEmitter)="sliceDogs($event)" ></app-page-selection>
   </div>
 
-</section>
+  <button class="button button-success mt-3" routerLink="/caninos/crear">Añadir canino</button>
 
+</section>

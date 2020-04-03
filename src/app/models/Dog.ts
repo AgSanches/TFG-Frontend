@@ -5,6 +5,7 @@ export class Dog {
     public name: string,
     public bread: string,
     public gender: string,
+    public birth:string,
     public weight: number,
     public height: number,
     public photo_path: string,

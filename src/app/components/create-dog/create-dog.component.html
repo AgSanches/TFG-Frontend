@@ -1,0 +1,122 @@
+<div class="container-fluid">
+
+  <h1 class="my-4 text-center text-md-left">Crear Canino</h1>
+
+  <p *ngIf="showMessage" [ngClass]="{'error-message': !formStatus, 'success-message': formStatus}">
+    {{formMessage}}
+  </p>
+
+  <form #createDog = "ngForm" (ngSubmit)="onSubmit(createDog)">
+
+    <div class="form-row">
+
+      <div class="col-12 col-md-6 form-group">
+        <input type="text" class="form-control" name="name" placeholder="Nombre" #name="ngModel"
+               [(ngModel)]="dog.name" required pattern="[A-zÀ-ú]+"
+               [class.error-input]="!name.valid && name.touched">
+        <p class="error-message" *ngIf="!name.valid && name.touched">
+          Introduce el nombre correctamente.
+        </p>
+      </div>
+
+      <div class="col-12 col-md-6 form-group">
+
+        <input type="text" class="form-control" name="bread" placeholder="Raza" #bread="ngModel"
+               [(ngModel)]="dog.bread" required pattern="[A-zÀ-ú]+"
+               [class.error-input]="!bread.valid && bread.touched">
+        <p class="error-message" *ngIf="!bread.valid && bread.touched">
+          Introduce la raza correctamente.
+        </p>
+
+      </div>
+    </div>
+
+    <div class="form-row">
+
+      <div class="col-12 col-md-6 form-group">
+
+        <label>Género</label>
+        <select class="form-control" name="gender" #gender="ngModel"
+                [(ngModel)]="dog.gender" required
+                [class.error-input]="!gender.valid && gender.touched">
+          <option value="" selected>Especifica una de las siguientes</option>
+          <option value="male">Macho</option>
+          <option value="female">Hembra</option>
+
+        </select>
+        <p class="error-message" *ngIf="!gender.valid && gender.touched">
+          Introduce un género.
+        </p>
+      </div>
+
+      <div class="col-12 col-md-6 form-group">
+
+        <label>Nacimiento</label>
+        <input type="date" class="form-control" name="birth" #birth="ngModel"
+               [(ngModel)]="dog.birth" required
+               [class.error-input]="(!birth.valid || !dateValid) && birth.touched"
+               max="{{todayDate}}"
+               (change)="checkDate()"
+        >
+        <p class="error-message" *ngIf="(!birth.valid || !dateValid) && birth.touched">
+          Introduce una fecha correcta
+        </p>
+      </div>
+    </div>
+
+    <div class="form-row">
+
+      <div class="col-12 col-md-6 form-group">
+        <label>Peso</label>
+        <input type="number" class="form-control" name="weight" placeholder="Peso" #weight="ngModel"
+               [(ngModel)]="dog.weight" required min="0" step="1"
+               [class.error-input]="( !weight.valid || !weightValid ) && weight.touched"
+               (change)="checkWeight()"
+        >
+        <small class="form-text text-muted">
+          Introduce el peso en kg.
+        </small>
+        <p class="error-message" *ngIf="( !weight.valid || !weightValid ) && weight.touched">
+          Introduce el peso.
+        </p>
+      </div>
+
+      <div class="col-12 col-md-6 form-group">
+        <label>Altura</label>
+        <input type="number" class="form-control" name="height" placeholder="Altura" #height="ngModel"
+               [(ngModel)]="dog.height" required min="0" step="1"
+               [class.error-input]="( !height.valid || !heightValid ) && height.touched"
+               (change)="checkHeight()"
+        >
+        <small class="form-text text-muted">
+          Introduce la altura en cm.
+        </small>
+        <p class="error-message" *ngIf="( !height.valid || !heightValid ) && height.touched ">
+          Introduce el peso.
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Imagen</label>
+      <input type="file" class="form-control-file" name="file"
+              (change)="checkFile($event.target.files)"
+              [class.error-input]="!fileValid">
+      <small class="form-text text-muted">
+        El tamaño máximo permitido es de 1 Mb.
+      </small>
+      <p class="error-message" *ngIf="!fileValid">
+        {{fileMessage}}
+      </p>
+    </div>
+
+    <button class="button mr-md-2"
+            [class.button-success]="createDog.valid && fileValid && heightValid && weightValid && dateValid"
+            [disabled]="!createDog.valid || !fileValid || !heightValid || !weightValid || !dateValid">
+      Crear
+    </button>
+    <button class="button button-danger" (click)="goBack()">Volver</button>
+
+  </form>
+
+</div>

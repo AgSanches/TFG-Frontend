@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthenticationService} from './authentication.service';
 import {Observable} from 'rxjs';
 import {Dog} from '../models/Dog';
-import {map} from 'rxjs/operators';
+import {first, map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -28,11 +28,33 @@ export class DogsService {
     }));
   }
 
-  getDog(){
-    // TODO
+  createDog(dog: Dog): Observable<Dog>{
+    return this.http.post(url + "/dog", {
+      "name": dog.name, "bread" : dog.bread, "birth" : dog.birth, "gender" : dog.gender,
+      "weight" : dog.weight, "height" : dog.height
+    }).pipe(
+      map((element: any) => {
+        return new Dog(element.id, element.name, element.bread,
+          element.gender, element.birth, element.weight, element.height,
+          element.photo_path, element.observations, element.updated_at, element.created_at)
+      })
+    );
   }
 
-  createDog(){
+  uploadImage(id: number, file: File): Observable<any> {
+
+    let formData:FormData = new FormData();
+    formData.set('file', file);
+
+    let headers = new HttpHeaders();
+    headers.set('Content-Type', 'multipart/form-data');
+
+    return this.http.post(url + `/dog/image/${id}`, formData, {
+      headers:headers
+    })
+  }
+
+  getDog(){
     // TODO
   }
 
@@ -42,9 +64,5 @@ export class DogsService {
 
   deleteDog(){
     // TODO
-  }
-
-  getCountDogs():Observable<any> {
-    return this.http.get(url + '/count/dog');
   }
 }

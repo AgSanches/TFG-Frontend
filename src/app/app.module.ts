@@ -16,6 +16,7 @@ import {FormsModule} from '@angular/forms';
 import { DogBoxComponent } from './components/dog-box/dog-box.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { PageSelectionComponent } from './components/page-selection/page-selection.component';
+import { CreateDogComponent } from './components/create-dog/create-dog.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { PageSelectionComponent } from './components/page-selection/page-selecti
     DogBoxComponent,
     FilterComponent,
     PageSelectionComponent,
+    CreateDogComponent,
 
   ],
     imports: [
