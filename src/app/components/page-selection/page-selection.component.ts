@@ -24,14 +24,14 @@ export class PageSelectionComponent implements OnInit {
     this.itemsObservable.subscribe(data => {
       this.items = data;
       this.currentPage = 1;
-      this.hasNext = (this.currentPage * this.pageSize) <= this.items.length;
+      this.hasNext = (this.currentPage * this.pageSize) < this.items.length;
     });
   }
 
   changePage(value: number) {
 
     this.currentPage += value;
-    this.hasNext = (this.currentPage * this.pageSize) <= this.items.length;
+    this.hasNext = (this.currentPage * this.pageSize) < this.items.length;
 
     let start = (this.currentPage - 1) * this.pageSize;
 

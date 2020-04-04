@@ -34,7 +34,7 @@ export class CreateDogComponent implements OnInit {
     private dogsService: DogsService,
     private router: Router
   ) {
-    this.dog = new Dog(0, "", "", "", "",0, 0, "", [], "", "");
+    this.dog = new Dog(0, "", "", "", "",0, 0, "", "", "");
   }
 
   ngOnInit(): void {

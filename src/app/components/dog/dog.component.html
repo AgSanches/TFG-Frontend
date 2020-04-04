@@ -1,0 +1,45 @@
+<section class="container-fluid my-md-3 " *ngIf="dog">
+  <div class="row justify-content-around">
+
+    <article class="col-12 col-md-4 mr-md-2 dogInfo my-2">
+
+      <div class="container-fluid">
+        <img src="{{getDogImage()}}" alt="">
+      </div>
+
+      <h1 class="text-white mt-2">{{dog.name}}</h1>
+      <div class="text-left bg-white dogData">
+        <p>Raza: {{dog.bread}} </p>
+        <p>Nacimiento: {{dog.birth | date: 'dd/MM/yyyy'}}</p>
+        <p>Género: {{dog.gender}}</p>
+        <p>Peso: {{dog.weight}} kg</p>
+        <p>Altura: {{dog.height}} cm</p>
+
+        <div class="d-flex justify-content-around">
+          <a class="button button-success mr-2 ">Editar</a>
+          <a class="button button-danger">Eliminar</a>
+        </div>
+
+      </div>
+    </article>
+
+    <div class="col-12 col-md-7 mt-sm-4">
+
+      <h1>Sesiones</h1>
+
+      <app-filter
+        (filterEmitter)="searchSession($event)"
+        (filterSortEmitter)="sortSessions($event)"
+      ></app-filter>
+
+      <button class="button button-primary mt-2 d-block">Añadir sesión</button>
+
+      <app-sessions-box [session]="session" *ngFor="let session of sessions"></app-sessions-box>
+
+      <app-page-selection [pageSize]="limit" [itemsObservable]="sessionObservable" (currentPageEmitter)="sliceSessions($event)" ></app-page-selection>
+
+      <button class="button button-primary mt-2 d-block">Añadir sesión</button>
+
+    </div>
+  </div>
+</section>

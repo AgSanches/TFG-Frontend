@@ -20,7 +20,6 @@ export class DogsComponent implements OnInit {
   asc: boolean;
   date: boolean;
 
-
   constructor(
     private dogsService: DogsService,
     private sortService: SortService
@@ -32,6 +31,7 @@ export class DogsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.getAllDogs();
 
     this.dogsObservable.subscribe(data => {
@@ -49,6 +49,7 @@ export class DogsComponent implements OnInit {
       data => {
         this.dogsSource.next(data);
       }, error => {
+        //TODO Poner mensaje de error
         console.log("Problemas");
       });
   }
@@ -67,6 +68,7 @@ export class DogsComponent implements OnInit {
         data => {
           this.dogsSource.next(data);
         }, error => {
+          //TODO Poner mensaje de error
           console.log(error)
         });
     }

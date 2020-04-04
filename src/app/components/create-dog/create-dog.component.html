@@ -40,8 +40,8 @@
                 [(ngModel)]="dog.gender" required
                 [class.error-input]="!gender.valid && gender.touched">
           <option value="" selected>Especifica una de las siguientes</option>
-          <option value="male">Macho</option>
-          <option value="female">Hembra</option>
+          <option value="Macho">Macho</option>
+          <option value="Hembra">Hembra</option>
 
         </select>
         <p class="error-message" *ngIf="!gender.valid && gender.touched">

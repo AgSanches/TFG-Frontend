@@ -1,8 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-$primary--color: #4C4B80;
-
-$danger--color: #FF8282;
-$success--color: #91d7c3;
+@import "app/variables";
 
 .page-wrapper {
   min-height: 95vh;
@@ -53,6 +50,7 @@ $success--color: #91d7c3;
     background:darken($bg,8%);
     transition: all 0.3s ease;
     border: 1px solid black;
+    cursor: pointer;
   }
 
   &:active {
@@ -81,6 +79,10 @@ $success--color: #91d7c3;
 .button-white {
   @include button-bg(#fff);
   color: black;
+}
+
+.button-primary {
+  @include button-bg($primary--color);
 }
 
 

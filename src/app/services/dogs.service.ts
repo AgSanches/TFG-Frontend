@@ -5,6 +5,7 @@ import {AuthenticationService} from './authentication.service';
 import {Observable} from 'rxjs';
 import {Dog} from '../models/Dog';
 import {first, map} from 'rxjs/operators';
+import {DogObservation} from '../models/DogObservation';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,7 @@ export class DogsService {
       map((element: any) => {
         return new Dog(element.id, element.name, element.bread,
           element.gender, element.birth, element.weight, element.height,
-          element.photo_path, element.observations, element.updated_at, element.created_at)
+          element.photo_path, element.updated_at, element.created_at)
       })
     );
   }
@@ -54,8 +55,14 @@ export class DogsService {
     })
   }
 
-  getDog(){
-    // TODO
+  getDog(id: number): Observable<Dog>{
+    return this.http.get(url + `/dog/${id}`).pipe(
+      map((element: any) => {
+        return new Dog(element.id, element.name, element.bread,
+          element.gender, element.birth, element.weight, element.height,
+          element.photo_path, element.updated_at, element.created_at)
+      })
+    );
   }
 
   updateDog(){

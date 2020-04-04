@@ -1,4 +1,4 @@
-@import "src/styles";
+@import "./variables";
 
 .navbar {
   background-color: $primary--color !important;
@@ -21,8 +21,6 @@
 
     }
 }
-
-
 
 .footer {
   background-color: #4C4B80 !important;
