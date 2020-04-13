@@ -34,7 +34,7 @@
 
       <button class="button button-primary mt-2 d-block">Añadir sesión</button>
 
-      <app-sessions-box [session]="session" *ngFor="let session of sessions"></app-sessions-box>
+      <app-data-box [routerTarget]="'/session'" [input]="session" *ngFor="let session of sessions"></app-data-box>
 
       <app-page-selection [pageSize]="limit" [itemsObservable]="sessionObservable" (currentPageEmitter)="sliceSessions($event)" ></app-page-selection>
 

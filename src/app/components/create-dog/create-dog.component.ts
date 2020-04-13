@@ -46,30 +46,32 @@ export class CreateDogComponent implements OnInit {
   }
 
   onSubmit(createDog: any) {
-    this.dogsService.createDog(this.dog).subscribe(
-      response => {
+    if (createDog.valid && this.fileValid && this.heightValid && this.weightValid && this.dateValid ) {
+      this.dogsService.createDog(this.dog).subscribe(
+        response => {
 
-        this.dog = response;
+          this.dog = response;
 
-        if (this.dogPhoto){
-          this.dogsService.uploadImage(response.id, this.dogPhoto).subscribe(
-            response => {
-              this.router.navigate(['/caninos']);
-            },
-            error => {
-              this.formStatus = false;
-              this.formMessage = error.error.message.file;
-              this.showMessage = true;
-            });
-        } else {
-          this.router.navigate(['/caninos']);
-        }
+          if (this.dogPhoto){
+            this.dogsService.uploadImage(response.id, this.dogPhoto).subscribe(
+              response => {
+                this.router.navigate(['/caninos']);
+              },
+              error => {
+                this.formStatus = false;
+                this.formMessage = error.error.message.file;
+                this.showMessage = true;
+              });
+          } else {
+            this.router.navigate(['/caninos']);
+          }
 
-      }, error => {
-        this.formStatus = false;
-        this.formMessage = error.error.message;
-        this.showMessage = true;
-      });
+        }, error => {
+          this.formStatus = false;
+          this.formMessage = error.error.message;
+          this.showMessage = true;
+        });
+    }
   }
 
   checkHeight(){

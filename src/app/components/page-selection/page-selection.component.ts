@@ -15,8 +15,6 @@ export class PageSelectionComponent implements OnInit {
   items: Array<any>;
   hasNext: boolean;
 
-  pager: any = {};
-
   constructor() {
   }
 

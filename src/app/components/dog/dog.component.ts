@@ -16,8 +16,8 @@ import {SortService} from '../../services/sort.service';
 export class DogComponent implements OnInit {
 
   dog: Dog;
-  sessionSource: BehaviorSubject<Array<Session>>;
-  sessionObservable: Observable<Array<Session>>;
+  sessionSource: BehaviorSubject<Session[]>;
+  sessionObservable: Observable<Session[]>;
   sessions: Array<Session>;
 
   limit: number;
@@ -33,7 +33,7 @@ export class DogComponent implements OnInit {
     private sessionsService: SessionsService,
     private sortService: SortService
   ) {
-    this.sessionSource = new BehaviorSubject<Array<Session>>([]);
+    this.sessionSource = new BehaviorSubject<Session[]>([]);
     this.sessionObservable = this.sessionSource.asObservable();
     this.sessions = this.sessionSource.value;
     this.limit = 5;
@@ -51,11 +51,9 @@ export class DogComponent implements OnInit {
       });
     });
 
-
     this.sessionObservable.subscribe(sessions => {
       this.sessions = sessions.slice(0, this.limit);
       this.isSearching = false;
-      console.log(sessions);
     })
 
   }

@@ -1,0 +1,19 @@
+@import "src/app/variables";
+
+.loading {
+  height: 95vh;
+  background-color: $loading-color;
+  font-size: 5em;
+
+  .loader {
+    animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+}
+
+

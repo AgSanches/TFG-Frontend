@@ -18,7 +18,12 @@ import { FilterComponent } from './components/filter/filter.component';
 import { PageSelectionComponent } from './components/page-selection/page-selection.component';
 import { CreateDogComponent } from './components/create-dog/create-dog.component';
 import { DogComponent } from './components/dog/dog.component';
-import { SessionsBoxComponent } from './components/sessions-box/sessions-box.component';
+import { DataBoxComponent } from './components/data-box/data-box.component';
+import { SessionComponent } from './components/session/session.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { ErrorComponent } from './components/error/error.component';
+import { ConclusionBoxComponent } from './components/conclusion-box/conclusion-box.component';
+import { ObservationBoxComponent } from './components/observation-box/observation-box.component';
 
 
 @NgModule({
@@ -32,7 +37,12 @@ import { SessionsBoxComponent } from './components/sessions-box/sessions-box.com
     PageSelectionComponent,
     CreateDogComponent,
     DogComponent,
-    SessionsBoxComponent,
+    DataBoxComponent,
+    SessionComponent,
+    LoadingComponent,
+    ErrorComponent,
+    ConclusionBoxComponent,
+    ObservationBoxComponent,
 
   ],
     imports: [

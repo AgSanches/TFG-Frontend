@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SessionsBoxComponent } from './sessions-box.component';
+import { ConclusionBoxComponent } from './conclusion-box.component';
 
-describe('SessionsBoxComponent', () => {
-  let component: SessionsBoxComponent;
-  let fixture: ComponentFixture<SessionsBoxComponent>;
+describe('ConclusionBoxComponent', () => {
+  let component: ConclusionBoxComponent;
+  let fixture: ComponentFixture<ConclusionBoxComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SessionsBoxComponent ]
+      declarations: [ ConclusionBoxComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SessionsBoxComponent);
+    fixture = TestBed.createComponent(ConclusionBoxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

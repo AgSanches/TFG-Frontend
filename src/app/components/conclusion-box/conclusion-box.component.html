@@ -1,0 +1,10 @@
+<div class="my-2 observation p-2 text-white">
+  <h3 class="mb-2">Conclusión Sesión</h3>
+  <div *ngIf="conclusion; else empty">
+    {{conclusion}}
+  </div>
+
+  <ng-template #empty>
+    No se ha realizado ninguna conclusión
+  </ng-template>
+</div>

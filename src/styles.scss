@@ -5,6 +5,11 @@
   min-height: 95vh;
 }
 
+.observation {
+  background-color: $primary--color;
+  border-radius: 5px;
+}
+
 @mixin message-bg($bg) {
   margin-top: 0.5em;
   color: white;

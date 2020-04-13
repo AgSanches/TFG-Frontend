@@ -1,0 +1,7 @@
+@import "src/app/variables";
+
+.error {
+  height: 95vh;
+  background-color: $error-color;
+  font-size: 5em;
+}
