@@ -7,6 +7,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {Session} from '../../models/Session';
 import {SessionsService} from '../../services/sessions.service';
 import {SortService} from '../../services/sort.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dog',
@@ -25,6 +26,16 @@ export class DogComponent implements OnInit {
 
   asc: boolean;
   date: boolean;
+
+  swal = {
+    title: '¿Estás seguro?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#FF8282',
+    cancelButtonColor: '#91d7c3',
+    confirmButtonText: 'Eliminar',
+    cancelButtonText: 'Cancelar'
+  }
 
   constructor(
     private router: Router,
@@ -80,9 +91,7 @@ export class DogComponent implements OnInit {
         this.date?'updated_at':'name', this.asc?'asc':'desc' ).subscribe(sessions => {
           this.sessionSource.next(sessions);
           this.isSearching = false;
-      }, error => {
-          //TODO Mensaje error
-      })
+      });
 
     }
   }
@@ -96,5 +105,26 @@ export class DogComponent implements OnInit {
 
   sliceSessions($event: Array<Session>) {
     this.sessions = $event;
+  }
+
+  deleteDog() {
+    this.dogsService.deleteDog(this.dog.id).subscribe(() => {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Perro eliminado correctamente',
+        timer: 1500,
+        timerProgressBar: true
+      });
+      this.router.navigate(['/caninos'])
+    },() => {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Ha ocurrido un error, vuelva a intentarlo en otro momento.',
+        timer: 1500,
+        timerProgressBar: true
+      });
+    })
   }
 }

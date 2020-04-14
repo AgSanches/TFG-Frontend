@@ -69,7 +69,7 @@ export class DogsService {
     // TODO
   }
 
-  deleteDog(){
-    // TODO
+  deleteDog(id: number): Observable<any>{
+    return this.http.delete(`${url}/dog/${id}`)
   }
 }

@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRouting } from './app-routing/app-routing';
 import {RouterModule} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import {JwPaginationComponent} from 'jw-angular-pagination';
+
+import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 
 import {UserService} from './services/user.service';
 
@@ -46,11 +47,13 @@ import { ObservationBoxComponent } from './components/observation-box/observatio
 
   ],
     imports: [
-        BrowserModule,
-        HttpClientModule,
-        AppRouting,
-        RouterModule,
-        FormsModule,
+      BrowserModule,
+      HttpClientModule,
+      AppRouting,
+      RouterModule,
+      FormsModule,
+      SweetAlert2Module.forRoot()
+
     ],
   providers: [
     UserService

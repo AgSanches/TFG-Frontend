@@ -16,29 +16,44 @@
         <p>Altura: {{dog.height}} cm</p>
 
         <div class="d-flex justify-content-around">
-          <a class="button button-success mr-2 ">Editar</a>
-          <a class="button button-danger">Eliminar</a>
+          <button class="button button-success mr-2 ">Editar</button>
+          <button
+            [swal]="swal"
+            (confirm)="deleteDog()"
+            class="button button-danger">Eliminar
+          </button>
         </div>
 
       </div>
     </article>
 
     <div class="col-12 col-md-7 mt-sm-4">
-
       <h1>Sesiones</h1>
 
-      <app-filter
-        (filterEmitter)="searchSession($event)"
-        (filterSortEmitter)="sortSessions($event)"
-      ></app-filter>
+      <div *ngIf="sessions.length > 0; else notfound">
+        <app-filter
+          (filterEmitter)="searchSession($event)"
+          (filterSortEmitter)="sortSessions($event)"></app-filter>
 
-      <button class="button button-primary mt-2 d-block">Añadir sesión</button>
+        <button class="button button-primary mt-2 d-block">Añadir sesión</button>
 
-      <app-data-box [routerTarget]="'/session'" [input]="session" *ngFor="let session of sessions"></app-data-box>
+        <app-data-box [routerTarget]="'/session'" [input]="session"
+                      *ngFor="let session of sessions"></app-data-box>
 
-      <app-page-selection [pageSize]="limit" [itemsObservable]="sessionObservable" (currentPageEmitter)="sliceSessions($event)" ></app-page-selection>
+        <app-page-selection [pageSize]="limit"
+                            [itemsObservable]="sessionObservable"
+                            (currentPageEmitter)="sliceSessions($event)">
+        </app-page-selection>
 
-      <button class="button button-primary mt-2 d-block">Añadir sesión</button>
+        <button class="button button-primary mt-2 d-block">Añadir sesión</button>
+      </div>
+
+      <ng-template #notfound>
+        <button class="button button-primary my-2 d-block">Añadir sesión</button>
+        <app-error [message]="'Este canino no cuenta con ninguna sesión.'"
+        ></app-error>
+      </ng-template>
+
 
     </div>
   </div>
