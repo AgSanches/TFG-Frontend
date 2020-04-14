@@ -29,4 +29,12 @@ export class SessionsService {
   getSessionsByName(dog_id: number, name:string ,sortby: string = 'updated_at', orderby: string = 'desc'): Observable<any>{
     return this.http.get(url + `/dog/sessions/${dog_id}/${name}/${sortby}/${orderby}`)
   }
+
+  createSession(dog_id: number, name: string): Observable<Session> {
+    return this.http.post(`${url}/dog/session/manage`, {name: name, dog_id: dog_id}).pipe(
+      map((session:Session) => {
+        return session;
+      })
+    )
+  }
 }

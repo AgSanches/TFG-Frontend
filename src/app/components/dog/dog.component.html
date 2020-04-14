@@ -35,7 +35,11 @@
           (filterEmitter)="searchSession($event)"
           (filterSortEmitter)="sortSessions($event)"></app-filter>
 
-        <button class="button button-primary mt-2 d-block">Añadir sesión</button>
+        <button
+          class="button button-primary mt-2 d-block"
+          [swal]="swalCreateSession"
+          (confirm)="createSession($event)"
+        >Añadir sesión</button>
 
         <app-data-box [routerTarget]="'/session'" [input]="session"
                       *ngFor="let session of sessions"></app-data-box>
@@ -45,11 +49,20 @@
                             (currentPageEmitter)="sliceSessions($event)">
         </app-page-selection>
 
-        <button class="button button-primary mt-2 d-block">Añadir sesión</button>
+        <button
+          class="button button-primary mt-2 d-block"
+          [swal]="swalCreateSession"
+          (confirm)="createSession($event)"
+        >Añadir sesión</button>
+
       </div>
 
       <ng-template #notfound>
-        <button class="button button-primary my-2 d-block">Añadir sesión</button>
+        <button
+          class="button button-primary my-2 d-block"
+          [swal]="swalCreateSession"
+          (confirm)="createSession($event)"
+        >Añadir sesión</button>
         <app-error [message]="'Este canino no cuenta con ninguna sesión.'"
         ></app-error>
       </ng-template>

@@ -27,6 +27,19 @@ export class DogComponent implements OnInit {
   asc: boolean;
   date: boolean;
 
+  swalCreateSession = {
+    title: 'Elige un nombre',
+    input: 'text',
+    inputAttributes: {
+      placeholder: 'Nombre'
+    },
+    showCancelButton: true,
+    cancelButtonText: 'Cancelar',
+    cancelButtonColor: '#FF8282',
+    confirmButtonText: 'Crear',
+    confirmButtonColor: '#91d7c3',
+  }
+
   swal = {
     title: '¿Estás seguro?',
     icon: 'warning',
@@ -109,6 +122,7 @@ export class DogComponent implements OnInit {
 
   deleteDog() {
     this.dogsService.deleteDog(this.dog.id).subscribe(() => {
+
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -116,6 +130,7 @@ export class DogComponent implements OnInit {
         timer: 1500,
         timerProgressBar: true
       });
+
       this.router.navigate(['/caninos'])
     },() => {
       Swal.fire({
@@ -126,5 +141,13 @@ export class DogComponent implements OnInit {
         timerProgressBar: true
       });
     })
+  }
+
+  createSession(name: string) {
+    this.sessionsService.createSession(this.dog.id, name).subscribe(value => {
+      const newArray: Session[] = this.sessionSource.getValue();
+      newArray.push(value);
+      this.sessionSource.next(newArray);
+    });
   }
 }
