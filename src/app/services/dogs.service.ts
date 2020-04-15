@@ -35,9 +35,7 @@ export class DogsService {
       "weight" : dog.weight, "height" : dog.height
     }).pipe(
       map((element: any) => {
-        return new Dog(element.id, element.name, element.bread,
-          element.gender, element.birth, element.weight, element.height,
-          element.photo_path, element.updated_at, element.created_at)
+        return element as Dog
       })
     );
   }
@@ -58,11 +56,8 @@ export class DogsService {
   getDog(id: number): Observable<Dog>{
     return this.http.get(url + `/dog/${id}`).pipe(
       map((element: any) => {
-        return new Dog(element.id, element.name, element.bread,
-          element.gender, element.birth, element.weight, element.height,
-          element.photo_path, element.updated_at, element.created_at)
-      })
-    );
+        return element as Dog;
+      }));
   }
 
   updateDog(){

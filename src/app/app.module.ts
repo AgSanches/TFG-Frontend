@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { DogsComponent } from './components/dogs/dogs.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DogBoxComponent } from './components/dog-box/dog-box.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { PageSelectionComponent } from './components/page-selection/page-selection.component';
@@ -50,15 +50,16 @@ import { CreateTomaComponent } from './components/create-toma/create-toma.compon
     CreateTomaComponent,
 
   ],
-    imports: [
-      BrowserModule,
-      HttpClientModule,
-      AppRouting,
-      RouterModule,
-      FormsModule,
-      SweetAlert2Module.forRoot()
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRouting,
+    RouterModule,
+    FormsModule,
+    SweetAlert2Module.forRoot(),
+    ReactiveFormsModule
 
-    ],
+  ],
   providers: [
     UserService
   ],
