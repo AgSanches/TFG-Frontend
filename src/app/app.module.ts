@@ -25,6 +25,8 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ConclusionBoxComponent } from './components/conclusion-box/conclusion-box.component';
 import { ObservationBoxComponent } from './components/observation-box/observation-box.component';
+import { SessionMainComponent } from './components/session-main/session-main.component';
+import { CreateTomaComponent } from './components/create-toma/create-toma.component';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import { ObservationBoxComponent } from './components/observation-box/observatio
     ErrorComponent,
     ConclusionBoxComponent,
     ObservationBoxComponent,
+    SessionMainComponent,
+    CreateTomaComponent,
 
   ],
     imports: [
