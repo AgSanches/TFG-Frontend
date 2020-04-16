@@ -70,4 +70,9 @@ export class TomasService {
     return this.http.post(`${url}/dog/toma/video/upload/${tomaId}`, formData, {headers})
   }
 
+  getToma(id:number): Observable<Toma> {
+    return this.http.get(`${url}/dog/toma/${id}`).pipe(
+      map((toma: Toma) => toma )
+    )
+  }
 }

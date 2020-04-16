@@ -1,0 +1,14 @@
+<div *ngIf="toma; else loading">
+
+  <h2>{{toma.name}}</h2>
+
+  <app-toma-videos
+    [tomaId]="toma.id"
+    [videos]="[toma.video_front, toma.video_middle, toma.video_back]"
+  ></app-toma-videos>
+
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

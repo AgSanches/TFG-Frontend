@@ -9,6 +9,7 @@ import {DogComponent} from '../components/dog/dog.component';
 import {SessionComponent} from '../components/session/session.component';
 import {SessionMainComponent} from '../components/session-main/session-main.component';
 import {CreateTomaComponent} from '../components/create-toma/create-toma.component';
+import {TomaComponent} from '../components/toma/toma.component';
 
 const appRoutes: Routes = [
   { path: 'caninos', component: DogsComponent},
@@ -17,7 +18,7 @@ const appRoutes: Routes = [
   { path: 'session/:id', component: SessionComponent, children: [
       {path: '', component: SessionMainComponent},
       {path: 'create-toma', component: CreateTomaComponent},
-      {path: 'toma/:toma_id', component: CreateTomaComponent},
+      {path: 'toma/:toma_id', component: TomaComponent},
     ] },
   { path: 'registrarse', component: RegisterComponent},
   { path: 'login', component: LoginComponent}

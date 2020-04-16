@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 
+
 import {UserService} from './services/user.service';
 
 import { AppComponent } from './app.component';
@@ -30,6 +31,9 @@ import { CreateTomaComponent } from './components/create-toma/create-toma.compon
 import { TomaFileDescriptionComponent } from './components/toma-file-description/toma-file-description.component';
 import { TomaSensorUploadComponent } from './components/toma-sensor-upload/toma-sensor-upload.component';
 import { TomaVideoUploadComponent } from './components/toma-video-upload/toma-video-upload.component';
+import { TomaComponent } from './components/toma/toma.component';
+import { TomaVideosComponent } from './components/toma-videos/toma-videos.component';
+import { TomaSensorsComponent } from './components/toma-sensors/toma-sensors.component';
 
 
 @NgModule({
@@ -54,6 +58,9 @@ import { TomaVideoUploadComponent } from './components/toma-video-upload/toma-vi
     TomaFileDescriptionComponent,
     TomaSensorUploadComponent,
     TomaVideoUploadComponent,
+    TomaComponent,
+    TomaVideosComponent,
+    TomaSensorsComponent,
 
   ],
   imports: [
@@ -63,7 +70,7 @@ import { TomaVideoUploadComponent } from './components/toma-video-upload/toma-vi
     RouterModule,
     FormsModule,
     SweetAlert2Module.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
 
   ],
   providers: [
