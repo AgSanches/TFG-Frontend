@@ -1,0 +1,28 @@
+<div class="col-12 my-2 text-dark"
+     [ngClass]="{'success-message': status, 'error-message': !status }"
+     *ngIf="message"
+>
+  {{message}}
+</div>
+
+
+<div class="col-12 mt-2">
+  <label class="custom-file col-12 bg-main mr-2">
+    <input type="file" class="d-none" accept="text/csv" (change)="checkSensor($event.target.files,true)">
+    <p class="py-2">Subir Sensor delantero<i class="fas fa-file-excel ml-1"></i></p>
+  </label>
+
+  <div *ngIf="frontSensorFile">
+    <app-toma-file-description [file]="frontSensorFile"></app-toma-file-description>
+  </div>
+</div>
+
+<div class="col-12 mt-2">
+  <label class="custom-file col-12 bg-main">
+    <input type="file" class="d-none" accept="text/csv" (change)="checkSensor($event.target.files, false)">
+    <p class="py-2"> Subir Sensor trasero <i class="far fa-file-excel ml-1"></i></p>
+  </label>
+  <div *ngIf="backSensorFile">
+    <app-toma-file-description [file]="backSensorFile"></app-toma-file-description>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { url } from './variables';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Toma} from '../models/Toma';
 import {map} from 'rxjs/operators';
@@ -25,6 +25,49 @@ export class TomasService {
         })
       })
     )
+  }
+
+  createToma(toma: Toma): Observable<Toma>{
+    return this.http.post(`${url}/dog/toma/manage`, {
+      name: toma.name,
+      session_id: toma.session_id
+    }).pipe(
+      map((data: Toma) => data)
+    );
+  }
+
+  uploadSensor(tomaId: number, sensorFront: File, sensorBack: File){
+    const formData:FormData = new FormData();
+    const headers = new HttpHeaders();
+
+    if (sensorFront){
+      formData.set('sensor_data_front', sensorFront);
+    }
+    if (sensorBack) {
+      formData.set('sensor_data_back', sensorBack);
+    }
+
+    headers.set('Content-Type', 'multipart/form-data');
+    return this.http.post(`${url}/dog/toma/sensor/upload/${tomaId}`, formData, {headers})
+  }
+
+
+  uploadVideo(tomaId: number, videoFront: File, videoMiddle:File ,videoBack: File){
+    const formData:FormData = new FormData();
+    const headers = new HttpHeaders();
+
+    if (videoFront){
+      formData.set('video_front', videoFront);
+    }
+    if (videoMiddle) {
+      formData.set('video_middle', videoMiddle);
+    }
+    if (videoBack) {
+      formData.set('video_back', videoBack);
+    }
+
+    headers.set('Content-Type', 'multipart/form-data');
+    return this.http.post(`${url}/dog/toma/video/upload/${tomaId}`, formData, {headers})
   }
 
 }

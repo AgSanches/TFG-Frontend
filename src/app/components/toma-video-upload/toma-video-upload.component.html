@@ -1,0 +1,38 @@
+<div class="col-12 my-2 text-dark"
+     [ngClass]="{'success-message': status, 'error-message': !status }"
+     *ngIf="message"
+>
+  {{message}}
+</div>
+
+
+<div class="col-12 mt-2">
+  <label class="custom-file col-12 bg-main">
+    <input type="file" class="d-none" accept="video/*" (change)="checkVideo($event.target.files, 1)">
+    <p class="py-2">Subir Video delantero <i class="fas fa-file-video"></i></p>
+  </label>
+  <div *ngIf="frontVideoFile">
+    <app-toma-file-description [file]="frontVideoFile"></app-toma-file-description>
+  </div>
+</div>
+
+<div class="col-12 mt-2">
+  <label class="custom-file col-12 bg-main">
+    <input type="file" class="d-none" accept="video/*" (change)="checkVideo($event.target.files, 2)">
+    <p class="py-2">Subir Video lateral <i class="fas fa-file-video ml-1"></i></p>
+  </label>
+  <div *ngIf="middleVideoFile">
+    <app-toma-file-description [file]="middleVideoFile"></app-toma-file-description>
+  </div>
+</div>
+
+<div class="col-12 my-2">
+  <label class="custom-file col-12 bg-main">
+    <input type="file" class="d-none" accept="video/mp4"(change)="checkVideo($event.target.files, 3)">
+    <p class="py-2">Subir Video trasero <i class="fas fa-file-video ml-1"></i></p>
+  </label>
+
+  <div *ngIf="backVideoFile">
+    <app-toma-file-description [file]="backVideoFile"></app-toma-file-description>
+  </div>
+</div>

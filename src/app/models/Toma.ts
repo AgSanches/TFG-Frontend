@@ -1,19 +1,14 @@
-export class Toma {
-
-  constructor(
-    public id: number,
-    public name: string,
-    public session_id: number,
-    public conclusion_ia: string,
-    public conclusion_expert: string,
-    public created_at: string,
-    public updated_at:string,
-    public video_front: string,
-    public video_middle: string,
-    public video_back: string,
-    public sensor_data_front: string,
-    public sensor_data_back: string,
-  ) {
-
-  }
+export interface Toma {
+     id?: number,
+     name: string,
+     session_id: number,
+     conclusion_ia?: string,
+     conclusion_expert?: string,
+     created_at?: string,
+     updated_at?:string,
+     video_front?: string,
+     video_middle?: string,
+     video_back?: string,
+     sensor_data_front?: string,
+     sensor_data_back?: string,
 }

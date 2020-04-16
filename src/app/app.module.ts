@@ -27,6 +27,9 @@ import { ConclusionBoxComponent } from './components/conclusion-box/conclusion-b
 import { ObservationBoxComponent } from './components/observation-box/observation-box.component';
 import { SessionMainComponent } from './components/session-main/session-main.component';
 import { CreateTomaComponent } from './components/create-toma/create-toma.component';
+import { TomaFileDescriptionComponent } from './components/toma-file-description/toma-file-description.component';
+import { TomaSensorUploadComponent } from './components/toma-sensor-upload/toma-sensor-upload.component';
+import { TomaVideoUploadComponent } from './components/toma-video-upload/toma-video-upload.component';
 
 
 @NgModule({
@@ -48,6 +51,9 @@ import { CreateTomaComponent } from './components/create-toma/create-toma.compon
     ObservationBoxComponent,
     SessionMainComponent,
     CreateTomaComponent,
+    TomaFileDescriptionComponent,
+    TomaSensorUploadComponent,
+    TomaVideoUploadComponent,
 
   ],
   imports: [

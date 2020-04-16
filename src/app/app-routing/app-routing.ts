@@ -17,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'session/:id', component: SessionComponent, children: [
       {path: '', component: SessionMainComponent},
       {path: 'create-toma', component: CreateTomaComponent},
+      {path: 'toma/:toma_id', component: CreateTomaComponent},
     ] },
   { path: 'registrarse', component: RegisterComponent},
   { path: 'login', component: LoginComponent}
