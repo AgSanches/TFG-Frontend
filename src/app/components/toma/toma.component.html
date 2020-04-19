@@ -2,11 +2,10 @@
 
   <h2>{{toma.name}}</h2>
 
-  <app-toma-videos
-    [tomaId]="toma.id"
-    [videos]="[toma.video_front, toma.video_middle, toma.video_back]"
-  ></app-toma-videos>
+  <app-toma-data [toma]="toma"></app-toma-data>
 
+  <app-observation-box [observation]="toma.conclusion_expert"></app-observation-box>
+  <app-conclusion-box [conclusion]="toma.conclusion_ia"></app-conclusion-box>
 </div>
 
 <ng-template #loading>

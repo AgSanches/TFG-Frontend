@@ -2,11 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRouting } from './app-routing/app-routing';
-import {RouterModule} from '@angular/router';
+import { RouterModule} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
-
 
 import {UserService} from './services/user.service';
 
@@ -34,6 +33,8 @@ import { TomaVideoUploadComponent } from './components/toma-video-upload/toma-vi
 import { TomaComponent } from './components/toma/toma.component';
 import { TomaVideosComponent } from './components/toma-videos/toma-videos.component';
 import { TomaSensorsComponent } from './components/toma-sensors/toma-sensors.component';
+import { TomaDataComponent } from './components/toma-data/toma-data.component';
+import {ChartsModule} from 'ng2-charts';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { TomaSensorsComponent } from './components/toma-sensors/toma-sensors.com
     TomaComponent,
     TomaVideosComponent,
     TomaSensorsComponent,
+    TomaDataComponent,
 
   ],
   imports: [
@@ -71,7 +73,7 @@ import { TomaSensorsComponent } from './components/toma-sensors/toma-sensors.com
     FormsModule,
     SweetAlert2Module.forRoot(),
     ReactiveFormsModule,
-
+    ChartsModule
   ],
   providers: [
     UserService

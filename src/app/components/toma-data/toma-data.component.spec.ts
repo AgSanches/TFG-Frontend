@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateDogComponent } from './create-dog.component';
+import { TomaDataComponent } from './toma-data.component';
 
-describe('CreateDogComponent', () => {
-  let component: CreateDogComponent;
-  let fixture: ComponentFixture<CreateDogComponent>;
+describe('TomaDataComponent', () => {
+  let component: TomaDataComponent;
+  let fixture: ComponentFixture<TomaDataComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateDogComponent ]
+      declarations: [ TomaDataComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateDogComponent);
+    fixture = TestBed.createComponent(TomaDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,16 +1,10 @@
 <div class="d-flex justify-content-center align-items-center flex-wrap videoWrapper" *ngIf="videos.length > 0; else novideo">
 
- <div class="col-12">
-   <button class="button button-success" (click)="togglePlay(true)">Reproducir</button>
-   <button class="button button-danger ml-0 ml-sm-1" (click)="togglePlay(false)">Pausar</button>
- </div>
-
   <div class="col-12 row justify-content-center">
     <video
       *ngFor="let video of videos" src="{{getVideo(video)}}"
       class="col-12 col-md-6 col-lg-4"
-      muted
-    >
+      muted>
     </video>
   </div>
 </div>
@@ -19,4 +13,5 @@
   <app-error
     [message]="'Esta toma no cuenta con videos, añade alguno para visualizar los datos'"
   ></app-error>
+
 </ng-template>

@@ -1,0 +1,21 @@
+<div class="row justify-content-center" *ngIf="sensors.length > 0 && videos.length > 0">
+
+  <div class="col-12">
+    <button class="button button-success" (click)="togglePlay(true)">Reproducir</button>
+    <button class="button button-danger ml-0 ml-sm-1" (click)="togglePlay(false)">Pausar</button>
+  </div>
+
+  <app-toma-videos class="col-12"
+    [tomaId]="toma.id"
+    [videos]="videos">
+  </app-toma-videos>
+
+  <app-toma-sensors class="col-12 col-md-6 col-lg-12"
+    [tomaId]="toma.id"
+    [sensors]="sensors"
+    [observable]="play.asObservable()">
+  </app-toma-sensors>
+
+
+
+</div>
