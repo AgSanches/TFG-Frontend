@@ -21,7 +21,8 @@ const appRoutes: Routes = [
       {path: 'toma/:toma_id', component: TomaComponent},
     ] },
   { path: 'registrarse', component: RegisterComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'users', loadChildren: () => import('../pages/users/users.module').then(m => m.UsersModule)}
 ];
 
 @NgModule({
