@@ -20,7 +20,7 @@ export class UserService {
   }
 
   register(user:User): Observable<any> {
-    return this.http.post(url + '/register', {
+    return this.http.post(`${url}/user`, {
       "email": user.email,
       "password": user.password,
       "name" : user.name,

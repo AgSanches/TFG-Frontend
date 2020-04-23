@@ -2,7 +2,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 
 import {DogsComponent} from '../components/dogs/dogs.component';
-import {RegisterComponent} from '../components/register/register.component';
 import {LoginComponent} from '../components/login/login.component';
 import {CreateDogComponent} from '../components/create-dog/create-dog.component';
 import {DogComponent} from '../components/dog/dog.component';
@@ -20,7 +19,6 @@ const appRoutes: Routes = [
       {path: 'create-toma', component: CreateTomaComponent},
       {path: 'toma/:toma_id', component: TomaComponent},
     ] },
-  { path: 'registrarse', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
   { path: 'users', loadChildren: () => import('../pages/users/users.module').then(m => m.UsersModule)}
 ];

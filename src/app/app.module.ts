@@ -11,7 +11,6 @@ import {UserService} from './services/user.service';
 
 import { AppComponent } from './app.component';
 import { DogsComponent } from './components/dogs/dogs.component';
-import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DogBoxComponent } from './components/dog-box/dog-box.component';
@@ -42,7 +41,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     DogsComponent,
-    RegisterComponent,
     LoginComponent,
     DogBoxComponent,
     FilterComponent,
