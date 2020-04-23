@@ -24,7 +24,12 @@ export class RegisterComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private route:Router
   ) {
-    this.user = new User("", "", "", "", "", "");
+    this.user = {
+      name: "",
+      email: "",
+      password: "",
+      surname: ""
+    }
   }
 
   ngOnInit(): void {

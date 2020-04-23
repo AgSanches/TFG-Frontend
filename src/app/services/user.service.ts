@@ -3,6 +3,7 @@ import {url} from './variables';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../models/User';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,6 @@ export class UserService {
     private http: HttpClient,
   ) {
     this.headers = new HttpHeaders().set('Content-Type', 'application/json');
-
   }
 
   register(user:User): Observable<any> {
@@ -27,4 +27,16 @@ export class UserService {
       "surname": user.surname
     }, {headers: this.headers});
   }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get(`${url}/users`).pipe(
+      map((users:User[]) => {
+        return users.map(user => {
+          return user as User;
+        })
+      })
+    )
+  }
+
+
 }

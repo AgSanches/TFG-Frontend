@@ -8,12 +8,24 @@ import { UserCreateComponent } from './user-create/user-create.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserComponent } from './user/user.component';
 
+import {DataTablesModule} from 'angular-datatables';
+import {MatInputModule} from '@angular/material/input';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [UserListComponent, UserFormComponent, UserCreateComponent, UserEditComponent, UserComponent],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    DataTablesModule,
+    MatInputModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
+
   ]
 })
 export class UsersModule { }

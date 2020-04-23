@@ -35,6 +35,7 @@ import { TomaVideosComponent } from './components/toma-videos/toma-videos.compon
 import { TomaSensorsComponent } from './components/toma-sensors/toma-sensors.component';
 import { TomaDataComponent } from './components/toma-data/toma-data.component';
 import {ChartsModule} from 'ng2-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import {ChartsModule} from 'ng2-charts';
     FormsModule,
     SweetAlert2Module.forRoot(),
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     UserService
