@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import {url} from './variables';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {AuthenticationService} from './authentication.service';
 import {Observable} from 'rxjs';
 import {Dog} from '../models/Dog';
-import {first, map} from 'rxjs/operators';
-import {DogObservation} from '../models/DogObservation';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class DogsService {
 
   constructor(
@@ -18,19 +17,19 @@ export class DogsService {
   }
 
   getDogs(): Observable<any>{
-    return this.http.get(url + `/dogs` ).pipe(map((dog:Dog) => {
+    return this.http.get(`${url}/dogs` ).pipe(map((dog:Dog) => {
       return dog;
     }));
   }
 
   getDogsByName(name:string): Observable<any>{
-    return this.http.get(url + "/dog/name/" + name).pipe(map((dog:Dog) => {
+    return this.http.get(`${url}/dog/name/${name}`).pipe(map((dog:Dog) => {
       return dog;
     }));
   }
 
   createDog(dog: Dog): Observable<Dog>{
-    return this.http.post(url + "/dog", {
+    return this.http.post(`${url}/dog`, {
       "name": dog.name, "bread" : dog.bread, "birth" : dog.birth, "gender" : dog.gender,
       "weight" : dog.weight, "height" : dog.height
     }).pipe(
@@ -48,13 +47,13 @@ export class DogsService {
     let headers = new HttpHeaders();
     headers.set('Content-Type', 'multipart/form-data');
 
-    return this.http.post(url + `/dog/image/${id}`, formData, {
+    return this.http.post(`${url}/dog/image/${id}`, formData, {
       headers:headers
     })
   }
 
   getDog(id: number): Observable<Dog>{
-    return this.http.get(url + `/dog/${id}`).pipe(
+    return this.http.get(`${url}/dog/${id}`).pipe(
       map((element: any) => {
         return element as Dog;
       }));
