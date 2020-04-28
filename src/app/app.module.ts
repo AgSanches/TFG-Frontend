@@ -20,7 +20,6 @@ import { CreateDogComponent } from './components/create-dog/create-dog.component
 import { DogComponent } from './components/dog/dog.component';
 import { DataBoxComponent } from './components/data-box/data-box.component';
 import { SessionComponent } from './components/session/session.component';
-import { LoadingComponent } from './components/loading/loading.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ConclusionBoxComponent } from './components/conclusion-box/conclusion-box.component';
 import { ObservationBoxComponent } from './components/observation-box/observation-box.component';
@@ -35,6 +34,7 @@ import { TomaSensorsComponent } from './components/toma-sensors/toma-sensors.com
 import { TomaDataComponent } from './components/toma-data/toma-data.component';
 import {ChartsModule} from 'ng2-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {SharedModule} from './shared/shared.module';
 
 
 @NgModule({
@@ -49,7 +49,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DogComponent,
     DataBoxComponent,
     SessionComponent,
-    LoadingComponent,
     ErrorComponent,
     ConclusionBoxComponent,
     ObservationBoxComponent,
@@ -62,7 +61,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TomaVideosComponent,
     TomaSensorsComponent,
     TomaDataComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -73,12 +71,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SweetAlert2Module.forRoot(),
     ReactiveFormsModule,
     ChartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [
     UserService
   ],
-  bootstrap: [AppComponent]
+  exports: [
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 
 
