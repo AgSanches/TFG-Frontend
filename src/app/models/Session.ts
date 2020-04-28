@@ -11,7 +11,6 @@ export class Session {
     public created_at: string,
     public updated_at:string,
     public tomas: Array<Toma>
-
   ) {
   }
 

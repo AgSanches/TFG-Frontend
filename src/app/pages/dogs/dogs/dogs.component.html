@@ -1,0 +1,31 @@
+<section class="container-fluid" *ngIf="dogs; else loading">
+
+  <div *ngIf="!isSearching && dogs.length > 0 ; else error">
+    <div class="container mt-2">
+      <app-filter
+        (filterEmitter)="searchDogs($event)"
+        (filterSortEmitter)="sortDogs($event)"
+      > </app-filter>
+    </div>
+
+    <button class="button button-success mt-3" routerLink="crear">Añadir canino</button>
+
+    <div class="dogs d-flex" >
+      <app-dog-box class="dog-card" *ngFor="let dog of dogs" [dog]="dog">
+      </app-dog-box>
+    </div>
+
+    <app-page-selection [pageSize]="limit" [itemsObservable]="dogsObservable" (currentPageEmitter)="sliceDogs($event)" ></app-page-selection>
+    <button class="button button-success mt-3" routerLink="crear">Añadir canino</button>
+  </div>
+
+  <ng-template #error>
+    <button class="button button-success mt-3" routerLink="crear">Añadir canino</button>
+    <app-error [message]="'No se han encontrado resultados'"></app-error>
+  </ng-template>
+
+</section>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

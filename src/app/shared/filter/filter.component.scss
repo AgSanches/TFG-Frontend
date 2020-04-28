@@ -1,0 +1,18 @@
+@import "../../variables";
+
+.filter-element {
+  font-size: 1.5em;
+  color: white;
+}
+
+.filtersort {
+  &:hover {
+    color: $primary--color;
+    cursor: pointer;
+  }
+
+}
+
+.active {
+  color: $danger--color;
+}

@@ -1,9 +1,0 @@
-<div class="dog-image" >
-  <img src="{{getDogImage()}}" alt="">
-</div>
-
-<div class="dog-info">
-  <h5 class="mb-0">{{dog.name | slice: 0: 10}}</h5>
-  <p class="mb-1">{{dog.updated_at | date: 'dd/MM/yyyy HH:mm'}}</p>
-  <a [routerLink]="['/canino', dog.id]" class="button button-white">Acceder</a>
-</div>

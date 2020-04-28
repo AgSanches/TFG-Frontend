@@ -1,0 +1,29 @@
+@import "../../variables";
+
+.page-selection {
+
+  margin: 1em auto;
+  padding: 0.2em 0;
+  font-size: 1.4em;
+
+  span {
+    margin: 0 0.6em;
+  }
+
+  .page-selector {
+    background-color: $primary--color;
+    color: white;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+      background-color: darken($primary--color, 10)
+    }
+
+    &:active {
+      background-color: $success--color;
+      color: black;
+    }
+
+  }
+}

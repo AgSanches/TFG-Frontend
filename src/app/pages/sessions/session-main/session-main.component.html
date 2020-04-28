@@ -1,0 +1,31 @@
+<div *ngIf="session; else loading">
+
+  <h1 class="text-capitalize">{{session.name}}</h1>
+
+  <div *ngIf="tomas.length >= 1; else notfound">
+
+    <app-filter
+      (filterEmitter)="searchTomas($event)"
+      (filterSortEmitter)="sortTomas($event)"
+    ></app-filter>
+    <h2 class="mt-3">Tomas</h2>
+    <button class="button button-primary mt-2 d-block" [routerLink]="['crear-toma']">Añadir toma</button>
+    <app-data-box [routerTarget]="'tomas/toma'" [input]="toma" *ngFor="let toma of tomas"></app-data-box>
+    <app-page-selection [pageSize]="limit" [itemsObservable]="tomaSource.asObservable()" (currentPageEmitter)="sliceTomas($event)" ></app-page-selection>
+    <button class="button button-primary mt-2 d-block" [routerLink]="['crear-toma']">Añadir toma</button>
+    <app-observation-box [observation]="session.conclusion_expert"></app-observation-box>
+    <app-conclusion-box [conclusion]="session.conclusion_ia" ></app-conclusion-box>
+  </div>
+
+  <ng-template #notfound>
+    <button class="button button-primary mt-2 d-block" [routerLink]="['crear-toma']">Añadir toma</button>
+    <div class="alert alert-danger mt-2" >
+      No existen tomas
+    </div>
+  </ng-template>
+
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>
