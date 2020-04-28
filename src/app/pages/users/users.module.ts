@@ -13,21 +13,23 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SharedModule} from '../../shared/shared.module';
+import {UserEditPasswordComponent} from './user-edit-password/user-edit-password.component';
 
 
 @NgModule({
-  declarations: [UserListComponent, UserCreateComponent, UserEditComponent, UserComponent],
-  imports: [
-    CommonModule,
-    UsersRoutingModule,
-    DataTablesModule,
-    MatInputModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule,
-    ReactiveFormsModule,
-    FormsModule
-
-  ]
+  declarations: [UserListComponent, UserCreateComponent, UserEditComponent, UserComponent, UserEditPasswordComponent],
+    imports: [
+      CommonModule,
+      UsersRoutingModule,
+      DataTablesModule,
+      MatInputModule,
+      MatTableModule,
+      MatSortModule,
+      MatPaginatorModule,
+      ReactiveFormsModule,
+      FormsModule,
+      SharedModule
+    ]
 })
 export class UsersModule { }

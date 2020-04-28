@@ -38,5 +38,27 @@ export class UserService {
     )
   }
 
+  getUser(id: string): Observable<User> {
+    return this.http.get(`${url}/user/${id}`).pipe(
+      map(user => user as User)
+    )
+  }
+
+  updateUser(user: User): Observable<User>{
+    return this.http.put(`${url}/user/${user.id}`, {
+      "email": user.email,
+      "password": user.password,
+      "name" : user.name,
+      "surname": user.surname
+    }, {headers: this.headers}).pipe(
+      map((user:User) => user)
+    );
+  }
+
+  updatePassword(user: User): Observable<any> {
+    return this.http.put(`${url}/user/change-password/${user.id}`, {
+      "password": user.password,
+    }, {headers: this.headers})
+  }
 
 }

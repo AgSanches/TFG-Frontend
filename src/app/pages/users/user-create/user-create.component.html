@@ -14,7 +14,7 @@
 
       <div class="form-group">
         <input type="text" class="form-control" name="name" placeholder="Nombre" #name="ngModel"
-               [(ngModel)]="user.name" required pattern="[A-zÀ-ú]+"
+               [(ngModel)]="user.name" required
                [class.error-input]="!name.valid && name.touched">
         <p class="error-message" *ngIf="!name.valid && name.touched">
           Introduce el nombre correctamente.
@@ -23,7 +23,7 @@
 
       <div class="form-group">
         <input type="text" class="form-control" name="surname" placeholder="Apellidos" #surname="ngModel"
-               [(ngModel)]="user.surname" required pattern="[A-zÀ-ú]+"
+               [(ngModel)]="user.surname" required
                [class.error-input]="!surname.valid && surname.touched">
         <p class="error-message" *ngIf="!surname.valid && surname.touched">
           Introduce los apellidos correctamente.

@@ -40,12 +40,14 @@ export class UserListComponent implements OnInit {
       text: 'No podrás revertir este cambio',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#FF8282',
+      cancelButtonColor: '#91d7c3',
       confirmButtonText: 'Sí, eliminar',
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.value) {
+
+
         Swal.fire({
           title: 'Usuario borrado',
           text: 'El usuario se ha borrado correctamente',
