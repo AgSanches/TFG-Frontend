@@ -100,8 +100,7 @@ export class DogComponent implements OnInit {
     if($event.length < 1){
       this.getAllSessions();
     } else {
-      this.sessionsService.getSessionsByName(this.dog.id, $event,
-        this.date?'updated_at':'name', this.asc?'asc':'desc' ).subscribe(sessions => {
+      this.sessionsService.getSessionsByName(this.dog.id, $event).subscribe(sessions => {
           this.sessionSource.next(sessions);
           this.isSearching = false;
       });
@@ -133,6 +132,7 @@ export class DogComponent implements OnInit {
 
       this.router.navigate(['/caninos'])
     },() => {
+
       Swal.fire({
         position: 'center',
         icon: 'error',

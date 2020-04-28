@@ -22,12 +22,12 @@ export class SessionsService {
     )
   }
 
-  getSessions(dog_id: number, sortby: string = 'updated_at', orderby: string = 'desc'): Observable<any>{
-    return this.http.get(url + `/dog/sessions/${dog_id}/${sortby}/${orderby}`)
+  getSessions(dog_id: number): Observable<any>{
+    return this.http.get(url + `/dog/sessions/${dog_id}`)
   }
 
-  getSessionsByName(dog_id: number, name:string ,sortby: string = 'updated_at', orderby: string = 'desc'): Observable<any>{
-    return this.http.get(url + `/dog/sessions/${dog_id}/${name}/${sortby}/${orderby}`)
+  getSessionsByName(dog_id: number, name:string ): Observable<any>{
+    return this.http.get(url + `/dog/sessions/${dog_id}/${name}`)
   }
 
   createSession(dog_id: number, name: string): Observable<Session> {

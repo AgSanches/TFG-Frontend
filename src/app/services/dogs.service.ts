@@ -17,8 +17,8 @@ export class DogsService {
   ) {
   }
 
-  getDogs(limit: number = 250, offset = 0, orderby = "updated_at", method="desc"): Observable<any>{
-    return this.http.get(url + `/dogs/${limit}/${orderby}/${method}/${offset}` ).pipe(map((dog:Dog) => {
+  getDogs(): Observable<any>{
+    return this.http.get(url + `/dogs` ).pipe(map((dog:Dog) => {
       return dog;
     }));
   }
