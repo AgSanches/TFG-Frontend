@@ -5,6 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {UserService} from '../../../services/user.service';
+import {User} from '../../../models/User';
 
 @Component({
   selector: 'app-user-list',
@@ -18,7 +19,6 @@ export class UserListComponent implements OnInit {
 
   public dataSource
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(private userService: UserService) {}
 
@@ -26,7 +26,6 @@ export class UserListComponent implements OnInit {
     this.userService.getUsers().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
     });
   }
 
@@ -34,7 +33,7 @@ export class UserListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  deleteUser(id) {
+  deleteUser(id: string) {
     Swal.fire({
       title: '¿Estás seguro?',
       text: 'No podrás revertir este cambio',
@@ -47,14 +46,27 @@ export class UserListComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
 
+        this.userService.deleteUser(id).subscribe(() => {
 
-        Swal.fire({
-          title: 'Usuario borrado',
-          text: 'El usuario se ha borrado correctamente',
-          icon: 'success',
-          timer: 2000,
-          timerProgressBar: true,
-        });
+          const data = this.dataSource._data.value
+          this.dataSource = new MatTableDataSource(data.filter((user:User) => user.id != id));
+
+          Swal.fire({
+            title: 'Usuario elimnado',
+            text: 'El usuario se ha borrado correctamente',
+            icon: 'success',
+            timer: 2000,
+            timerProgressBar: true,
+          });
+        }, () => {
+          Swal.fire({
+            title: 'Ha ocurrido un problema',
+            text: 'El usuario no ha podido ser eliminado',
+            icon: 'error',
+            timer: 4000,
+            timerProgressBar: true,
+          });
+        })
       }
     });
   }

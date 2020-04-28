@@ -61,4 +61,8 @@ export class UserService {
     }, {headers: this.headers})
   }
 
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete(`${url}/user/${id}`)
+  }
+
 }

@@ -20,7 +20,6 @@ import { CreateDogComponent } from './components/create-dog/create-dog.component
 import { DogComponent } from './components/dog/dog.component';
 import { DataBoxComponent } from './components/data-box/data-box.component';
 import { SessionComponent } from './components/session/session.component';
-import { ErrorComponent } from './components/error/error.component';
 import { ConclusionBoxComponent } from './components/conclusion-box/conclusion-box.component';
 import { ObservationBoxComponent } from './components/observation-box/observation-box.component';
 import { SessionMainComponent } from './components/session-main/session-main.component';
@@ -49,7 +48,6 @@ import {SharedModule} from './shared/shared.module';
     DogComponent,
     DataBoxComponent,
     SessionComponent,
-    ErrorComponent,
     ConclusionBoxComponent,
     ObservationBoxComponent,
     SessionMainComponent,
@@ -77,8 +75,7 @@ import {SharedModule} from './shared/shared.module';
   providers: [
     UserService
   ],
-  exports: [
-  ],
+  exports: [],
   bootstrap: [
     AppComponent
   ]
