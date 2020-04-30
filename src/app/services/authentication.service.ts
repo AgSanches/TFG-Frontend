@@ -4,6 +4,7 @@ import {url} from './variables';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../models/User';
 import {map} from 'rxjs/operators';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class AuthenticationService {
 
   constructor(
     private http: HttpClient,
+    private jwtHelperService: JwtHelperService
   ) {
     this.headers = new HttpHeaders().set('Content-Type', 'application/json');
     this.currentUserSource = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
@@ -40,5 +42,13 @@ export class AuthenticationService {
 
   getCurrentUser(): User {
     return this.currentUserSource.value;
+  }
+
+  isAuthenticated(): boolean {
+    if (!this.currentUserSource.value){
+      return false;
+    }
+
+    return !this.jwtHelperService.isTokenExpired(this.currentUserSource.value.access_token)
   }
 }

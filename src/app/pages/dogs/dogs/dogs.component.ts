@@ -42,15 +42,11 @@ export class DogsComponent implements OnInit {
   }
 
   getAllDogs(){
-
     this.isSearching = true;
 
     this.dogsService.getDogs().subscribe(
       data => {
         this.dogsSource.next(data);
-      }, error => {
-        //TODO Poner mensaje de error
-        console.log("Problemas");
       });
   }
 
@@ -67,9 +63,6 @@ export class DogsComponent implements OnInit {
       this.dogsService.getDogsByName($event).subscribe(
         data => {
           this.dogsSource.next(data);
-        }, error => {
-          //TODO Poner mensaje de error
-          console.log(error)
         });
     }
   }
@@ -77,7 +70,6 @@ export class DogsComponent implements OnInit {
   sliceDogs($event: Array<Dog>) {
     this.dogs = $event;
   }
-
 
   sortDogs($event: Array<any>) {
     this.date = $event[0];
