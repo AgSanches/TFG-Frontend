@@ -5,3 +5,9 @@
 .videoWrapper canvas {
   max-width: 85em;
 }
+
+@media (min-width: 1920px) {
+  video {
+    max-height: 25em;
+  }
+}

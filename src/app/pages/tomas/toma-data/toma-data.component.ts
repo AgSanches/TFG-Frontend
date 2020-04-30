@@ -15,20 +15,19 @@ export class TomaDataComponent implements OnInit {
   sensors: string[] = [];
   play: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-
   constructor() { }
 
   ngOnInit(): void {
-    this.videos = [this.toma.video_front, this.toma.video_middle, this.toma.video_back];
-    this.sensors = [this.toma.sensor_data_front, this.toma.sensor_data_back];
+    this.videos = [this.toma.video_front, this.toma.video_middle, this.toma.video_back].filter(value => value != null);
+    this.sensors = [this.toma.sensor_data_front, this.toma.sensor_data_back].filter(value => value != null);
   }
 
   togglePlay(play: boolean){
     this.play.next(play);
-
     const query = $('video');
     query.each( function() {
       (play)? $(this).get(0).play(): $(this).get(0).pause();
+
     });
   }
 

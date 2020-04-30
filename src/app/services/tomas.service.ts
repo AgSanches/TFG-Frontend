@@ -51,7 +51,6 @@ export class TomasService {
     return this.http.post(`${url}/dog/toma/sensor/upload/${tomaId}`, formData, {headers})
   }
 
-
   uploadVideo(tomaId: number, videoFront: File, videoMiddle:File ,videoBack: File){
     const formData:FormData = new FormData();
     const headers = new HttpHeaders();
@@ -74,5 +73,9 @@ export class TomasService {
     return this.http.get(`${url}/dog/toma/${id}`).pipe(
       map((toma: Toma) => toma )
     )
+  }
+
+  readSensor(id:number): Observable<any> {
+    return this.http.get(`${url}/dog/toma/sensor/${id}`)
   }
 }

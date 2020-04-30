@@ -3,7 +3,7 @@
   <div class="col-12 row justify-content-center">
     <video
       *ngFor="let video of videos" src="{{getVideo(video)}}"
-      class="col-12 col-md-6 col-lg-4"
+      class="{{videoClass}}"
       muted>
     </video>
   </div>
