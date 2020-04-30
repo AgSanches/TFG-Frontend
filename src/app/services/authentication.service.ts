@@ -22,6 +22,10 @@ export class AuthenticationService {
     this.headers = new HttpHeaders().set('Content-Type', 'application/json');
     this.currentUserSource = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this.currentUser = this.currentUserSource.asObservable();
+
+    if (!this.isAuthenticated()){
+      this.logout()
+    }
   }
 
   login(email:string, password: string): Observable<any> {
@@ -49,6 +53,11 @@ export class AuthenticationService {
       return false;
     }
 
-    return !this.jwtHelperService.isTokenExpired(this.currentUserSource.value.access_token)
+    if(this.jwtHelperService.isTokenExpired(this.currentUserSource.value.access_token)){
+      this.logout();
+      return false;
+    }
+
+    return true;
   }
 }

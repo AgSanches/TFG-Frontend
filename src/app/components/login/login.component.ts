@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.authService.getCurrentUser()){
-      this.route.navigateByUrl('/');
+      this.route.navigateByUrl('/dogs');
     }
   }
 
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.emailUser, this.passwordUser).subscribe(
       () => {
-        this.route.navigateByUrl('/');
+        this.route.navigateByUrl('/dogs');
       }, error => {
 
         this.showMessage = true;
