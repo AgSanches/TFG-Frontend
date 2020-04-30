@@ -8,7 +8,7 @@
 
 <div class="col-12 mt-2">
   <label class="custom-file col-12 bg-main mr-2">
-    <input type="file" class="d-none" accept="text/csv" (change)="checkSensor($event.target.files,true)">
+    <input type="file" class="d-none" accept="text/txt" (change)="checkSensor($event.target.files,true)">
     <p class="py-2">Subir Sensor delantero<i class="fas fa-file-excel ml-1"></i></p>
   </label>
 
@@ -19,7 +19,7 @@
 
 <div class="col-12 mt-2">
   <label class="custom-file col-12 bg-main">
-    <input type="file" class="d-none" accept="text/csv" (change)="checkSensor($event.target.files, false)">
+    <input type="file" class="d-none" accept="text/txt" (change)="checkSensor($event.target.files, false)">
     <p class="py-2"> Subir Sensor trasero <i class="far fa-file-excel ml-1"></i></p>
   </label>
   <div *ngIf="backSensorFile">
