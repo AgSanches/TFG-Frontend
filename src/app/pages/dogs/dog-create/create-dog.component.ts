@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { Dog } from '../../../models/Dog';
 import { DogsService } from '../../../services/dogs.service';
 import {Router} from '@angular/router';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-dog',
@@ -12,88 +11,50 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class DogCreateComponent implements OnInit {
 
-  showMessage: boolean;
-  formStatus: boolean;
-  formMessage: string;
-
-  dogForm: FormGroup;
-  dogPhoto: File = null;
-
-  fileValid: boolean = true;
-  fileMessage: string = "";
-
-  maxSize: number = 128 * 1024;
-  todayDate: string = new Date().toISOString().split("T")[0];
-
-  dateValid: boolean = false;
+  dog: Dog;
 
   constructor(
-    private location: Location,
     private dogsService: DogsService,
     private router: Router
-  ) {}
+  ) {
+    this.dog = {
+      height: 0, weight: 0, birth: "", gender: "", bread: "", name: ""
+    }
+  }
 
   ngOnInit(): void {
-    this.dogForm = new FormGroup({
-      name: new FormControl("", [Validators.required, Validators.maxLength(255)]),
-      bread: new FormControl("", [Validators.required, Validators.maxLength(255)]),
-      gender: new FormControl("", [Validators.required]),
-      birth: new FormControl("",[Validators.required]),
-      weight: new FormControl(0,[Validators.required]),
-      height: new FormControl(0,[Validators.required]),
-      image: new FormControl(""),
-    });
   }
 
-  onSubmit(dog: Dog) {
-    if (this.dogForm.valid && this.fileValid && this.dateValid ) {
-      this.dogsService.createDog(dog).subscribe(
-        response => {
-
-          if (this.dogPhoto){
-            this.uploadImage(response.id)
-          } else {
-            this.router.navigate(['/caninos']);
-          }
-
-        },
-        error => {
-          this.formStatus = false;
-          this.formMessage = error.error.message;
-          this.showMessage = true;
+  createDog(dog:Dog) {
+    this.dogsService.createDog(dog).subscribe(value => {
+      if (dog.dogPhoto){
+        this.uploadImage(value.id, dog.dogPhoto);
+      } else {
+        Swal.fire({
+          title: "Perro creado",
+          icon: "success",
+          timer: 2500,
+          timerProgressBar: true
         });
-    }
+
+        this.router.navigate(['/dogs', 'dog', value.id]);
+      }
+    })
   }
 
-  private uploadImage(id: number){
-    this.dogsService.uploadImage(id, this.dogPhoto).subscribe(
-      response => {
-        this.router.navigate(['/caninos']);
+  private uploadImage(id: number, file:File){
+    this.dogsService.uploadImage(id, file).subscribe(
+      () => {
+        this.router.navigate(['/dogs', 'dog', id]);
       },
       error => {
-        this.formStatus = false;
-        this.formMessage = error.error.message.file;
-        this.showMessage = true;
+        Swal.fire({
+          title: "Ha ocurrido un problema al subir la imagen",
+          icon: "error",
+          timer: 2500,
+          timerProgressBar: true,
+          text: error.error.message
+        });
       });
-  }
-
-  checkDate(){
-    this.dateValid = new Date(this.todayDate) > new Date(this.dogForm.value.birth);
-  }
-
-  checkFile($event: FileList) {
-
-    if($event[0].size > this.maxSize){
-      this.fileValid = false;
-      this.fileMessage = "El tamaño de la imagen supera el permitido.";
-      return
-    }
-
-    this.fileValid = true;
-    this.dogPhoto = $event.item(0);
-  }
-
-  goBack() {
-    this.location.back();
   }
 }

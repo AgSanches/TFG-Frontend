@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: '', component: DogBaseComponent ,children:
       [
         {path: "", component: DogsComponent},
-        {path: "create", component: DogCreateComponent},
+        {path: "crear", component: DogCreateComponent},
         {path: "dog/:id", component: DogComponent},
       ]
   }

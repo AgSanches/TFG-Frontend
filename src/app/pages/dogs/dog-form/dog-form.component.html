@@ -1,0 +1,72 @@
+<div class="container-fluid">
+
+  <h1 class="my-4 text-center text-md-left">Crear Canino</h1>
+  <form [formGroup]="dogForm" (ngSubmit)="onSubmit(dogForm.value)">
+    <div class="form-row">
+      <div class="col-12 col-md-6 form-group">
+        <input type="text" class="form-control" placeholder="Nombre" formControlName="name">
+      </div>
+      <div class="col-12 col-md-6 form-group">
+        <input type="text" class="form-control" placeholder="Raza" formControlName="bread">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-12 col-md-6 form-group">
+        <label>Género</label>
+        <select class="form-control" formControlName="gender">
+          <option value="" selected>Especifica una de las siguientes</option>
+          <option value="Macho">Macho</option>
+          <option value="Hembra">Hembra</option>
+        </select>
+      </div>
+      <div class="col-12 col-md-6 form-group">
+        <label>Nacimiento</label>
+        <input type="date" class="form-control" (change)="checkDate()"
+               max="{{todayDate}}" formControlName="birth">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-12 col-md-6 form-group">
+        <label>Peso</label>
+        <input type="number" class="form-control" placeholder="Peso" formControlName="weight">
+        <small class="form-text text-muted">
+          Introduce el peso en kg.
+        </small>
+      </div>
+      <div class="col-12 col-md-6 form-group">
+        <label>Altura</label>
+        <input type="number" class="form-control" placeholder="Altura" formControlName="height">
+        <small class="form-text text-muted">
+          Introduce la altura en cm.
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <p *ngIf="dogPhoto" class="w-100 p-2 mb-1 mt-3 text-center">
+        Imagen a subir: {{dogPhoto.name}}
+      </p>
+      <label class="custom-file col-12 bg-main text-white text-center">
+        <input type="file" class="d-none" formControlName="image"
+               (change)="checkFile($event.target.files)" accept="image/*"
+               [class.error-input]="!fileValid">
+        <p class="py-2">
+          Subir Imagen <i class="fas fa-dog"></i>
+        </p>
+      </label>
+      <small class="form-text text-muted">
+        El tamaño máximo permitido es de 1 Mb.
+      </small>
+      <p class="error-message" *ngIf="!fileValid">
+        {{fileMessage}}
+      </p>
+    </div>
+
+    <button class="button mr-md-2"
+            [class.button-success]="dogForm.valid && fileValid && dateValid"
+            [disabled]="!dogForm.valid || !fileValid || !dateValid"
+    >
+      Crear
+    </button>
+    <button  class="button button-danger" (click)="goBack()">Volver</button>
+  </form>
+</div>

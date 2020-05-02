@@ -59,8 +59,13 @@ export class DogsService {
       }));
   }
 
-  updateDog(){
-    // TODO
+  updateDog(dog:Dog): Observable<Dog>{
+    return this.http.put(`${url}/dog/${dog.id}`, {
+      "name": dog.name, "bread" : dog.bread, "birth" : dog.birth, "gender" : dog.gender,
+      "weight" : dog.weight, "height" : dog.height
+    }).pipe(map((dog: Dog) => {
+      return dog;
+    }))
   }
 
   deleteDog(id: number): Observable<any>{

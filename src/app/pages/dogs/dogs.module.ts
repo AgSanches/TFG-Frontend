@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../../shared/shared.module';
 import {DogComponent} from './dog/dog.component';
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
+import { DogFormComponent } from './dog-form/dog-form.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
     DogBoxComponent,
     DogBaseComponent,
     DogCreateComponent,
-    DogComponent
+    DogComponent,
+    DogFormComponent
   ],
   imports: [
     CommonModule,
