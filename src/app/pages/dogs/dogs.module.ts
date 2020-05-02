@@ -12,6 +12,7 @@ import {DogComponent} from './dog/dog.component';
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 import { DogFormComponent } from './dog-form/dog-form.component';
 import { DogEditComponent } from './dog-edit/dog-edit.component';
+import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { DogEditComponent } from './dog-edit/dog-edit.component';
     ReactiveFormsModule,
     SharedModule,
     SweetAlert2Module,
+    NgbDatepickerModule,
   ]
 })
 export class DogsModule { }

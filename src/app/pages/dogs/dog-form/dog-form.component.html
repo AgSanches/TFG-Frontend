@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-  <h1 class="my-4 text-center text-md-left">Crear Canino</h1>
+  <h1 class="my-4 text-center text-md-left">{{title}}</h1>
   <form [formGroup]="dogForm" (ngSubmit)="onSubmit(dogForm.value)">
     <div class="form-row">
       <div class="col-12 col-md-6 form-group">
@@ -21,8 +21,20 @@
       </div>
       <div class="col-12 col-md-6 form-group">
         <label>Nacimiento</label>
-        <input type="date" class="form-control" (change)="checkDate()"
-               max="{{todayDate}}" formControlName="birth">
+        <div class="input-group">
+          <input class="form-control" formControlName="birth"
+                 placeholder="dd/mm/yyyy"
+                 ngbDatepicker #d="ngbDatepicker"
+                 [maxDate]="maxDate"
+                 [(ngModel)]="startDate"
+          >
+          <div class="input-group-append">
+            <button class="btn btn-outline-dark" (click)="d.toggle()" type="button">
+              <i class="fas fa-calendar"></i>
+            </button>
+          </div>
+        </div>
+
       </div>
     </div>
     <div class="form-row">
@@ -62,11 +74,10 @@
     </div>
 
     <button class="button mr-md-2"
-            [class.button-success]="dogForm.valid && fileValid && dateValid"
-            [disabled]="!dogForm.valid || !fileValid || !dateValid"
-    >
-      Crear
+            [class.button-success]="dogForm.valid && fileValid "
+            [disabled]="!dogForm.valid || !fileValid"
+    > Confirmar
     </button>
-    <button  class="button button-danger" (click)="goBack()">Volver</button>
+    <button class="button button-danger" type="button" (click)="goBack()">Volver</button>
   </form>
 </div>

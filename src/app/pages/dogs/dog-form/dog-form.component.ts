@@ -2,8 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Dog} from '../../../models/Dog';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Location} from '@angular/common';
-import {DogsService} from '../../../services/dogs.service';
-import {Router} from '@angular/router';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -14,7 +13,7 @@ import {Router} from '@angular/router';
 export class DogFormComponent implements OnInit {
 
   @Output() dogEmitter: EventEmitter<Dog> = new EventEmitter<Dog>();
-
+  @Input() title: string = "Crear Canino";
   @Input() dog: Dog;
 
   dogForm: FormGroup;
@@ -24,14 +23,13 @@ export class DogFormComponent implements OnInit {
   fileMessage: string = "";
 
   maxSize: number = 128 * 1024;
-  todayDate: string = new Date().toISOString().split("T")[0];
 
-  dateValid: boolean = false;
+  maxDate;
+  startDate;
+
 
   constructor(
-    private location: Location,
-    private dogsService: DogsService,
-    private router: Router
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -40,22 +38,35 @@ export class DogFormComponent implements OnInit {
       name: new FormControl(this.dog.name, [Validators.required, Validators.maxLength(255)]),
       bread: new FormControl(this.dog.bread, [Validators.required, Validators.maxLength(255)]),
       gender: new FormControl(this.dog.gender, [Validators.required]),
-      birth: new FormControl("",[Validators.required]),
+      birth: new FormControl(this.dog.birth, [Validators.required]),
       weight: new FormControl(this.dog.weight,[Validators.required]),
       height: new FormControl(this.dog.height,[Validators.required]),
       image: new FormControl(""),
     });
+
+    this.maxDate = this.fromDateToDatepicker(new Date());
+    this.startDate = this.dog.birth ? this.fromDateToDatepicker(new Date(this.dog.birth)):this.fromDateToDatepicker(new Date());
   }
 
-  onSubmit(dog: Dog) {
-    if (this.dogForm.valid && this.fileValid && this.dateValid ) {
-      dog.dogPhoto = this.dogPhoto;
-      this.dogEmitter.emit(dog);
+  fromDateToDatepicker(date: Date){
+    const parseDate = date.toISOString().split("T")[0].split("-");
+    return {
+      year: parseInt(parseDate[0]),
+      month: parseInt(parseDate[1]),
+      day: parseInt(parseDate[2]) + 1,
     }
   }
 
-  checkDate(){
-    this.dateValid = new Date(this.todayDate) > new Date(this.dogForm.value.birth);
+  toModel(date: NgbDateStruct){
+    return `${date.year}/${date.month}/${date.day}`
+  }
+
+  onSubmit(dog: Dog) {
+    if (this.dogForm.valid && this.fileValid) {
+      dog.dogPhoto = this.dogPhoto;
+      dog.birth = this.toModel(this.startDate)
+      this.dogEmitter.emit(dog);
+    }
   }
 
   checkFile($event: FileList) {
