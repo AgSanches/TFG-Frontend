@@ -72,6 +72,14 @@ export class DogComponent implements OnInit {
       this.dogsService.getDog(params['id']).subscribe(dog => {
         this.dog = dog;
         this.getAllSessions();
+      }, () => {
+          Swal.fire({
+            title: "Canino no existente",
+            icon: "error",
+            timer: 2500,
+            timerProgressBar: true
+          });
+          this.router.navigate(["/dogs"]);
       });
     });
 
@@ -130,7 +138,7 @@ export class DogComponent implements OnInit {
         timerProgressBar: true
       });
 
-      this.router.navigate(['/caninos'])
+      this.router.navigate(['/dogs'])
     },() => {
 
       Swal.fire({

@@ -1,4 +1,4 @@
-<section class="container-fluid my-md-3 " *ngIf="dog">
+<section class="container-fluid my-md-3 " *ngIf="dog; else loading">
   <div class="row justify-content-around">
 
     <article class="col-12 col-md-4 mr-md-2 dogInfo my-2">
@@ -71,3 +71,7 @@
     </div>
   </div>
 </section>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>
