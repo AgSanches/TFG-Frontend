@@ -16,7 +16,9 @@
         <p>Altura: {{dog.height}} cm</p>
 
         <div class="d-flex justify-content-around">
-          <button class="button button-success mr-2 ">Editar</button>
+          <button class="button button-success mr-2"
+                  [routerLink]="['/dogs', 'editar', dog.id]">
+            Editar</button>
           <button
             [swal]="swal"
             (confirm)="deleteDog()"

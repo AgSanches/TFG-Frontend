@@ -35,11 +35,12 @@ export class DogFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.dogForm = new FormGroup({
       name: new FormControl(this.dog.name, [Validators.required, Validators.maxLength(255)]),
       bread: new FormControl(this.dog.bread, [Validators.required, Validators.maxLength(255)]),
       gender: new FormControl(this.dog.gender, [Validators.required]),
-      birth: new FormControl(this.dog.birth,[Validators.required]),
+      birth: new FormControl("",[Validators.required]),
       weight: new FormControl(this.dog.weight,[Validators.required]),
       height: new FormControl(this.dog.height,[Validators.required]),
       image: new FormControl(""),

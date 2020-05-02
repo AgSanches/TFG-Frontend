@@ -1,0 +1,12 @@
+<div class="container-fluid" *ngIf="dog; else loading">
+  <app-dog-form
+    (dogEmitter)="updateDog($event)"
+    [dog]="dog"
+  >
+  </app-dog-form>
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>
+

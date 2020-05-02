@@ -11,6 +11,7 @@ import {SharedModule} from '../../shared/shared.module';
 import {DogComponent} from './dog/dog.component';
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 import { DogFormComponent } from './dog-form/dog-form.component';
+import { DogEditComponent } from './dog-edit/dog-edit.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DogFormComponent } from './dog-form/dog-form.component';
     DogBaseComponent,
     DogCreateComponent,
     DogComponent,
-    DogFormComponent
+    DogFormComponent,
+    DogEditComponent
   ],
   imports: [
     CommonModule,
