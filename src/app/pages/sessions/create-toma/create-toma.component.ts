@@ -38,6 +38,7 @@ export class CreateTomaComponent implements OnInit {
         this.session = value;
         this.tomaForm = new FormGroup({
           name: new FormControl("", [Validators.required, Validators.maxLength(255)]),
+          type: new FormControl("", [Validators.required]),
           session_id: new FormControl(params['id']),});
       },
         () => {
@@ -58,10 +59,10 @@ export class CreateTomaComponent implements OnInit {
         value => {
           this.tomaSource.next(value);
       },
-        () => {
+        (error) => {
           Swal.fire({
             title: "No se ha podido crear la toma",
-            text: "Vuelva a intentarlo en otro momento",
+            text: "Comprueba que todos los campos son correctos",
             icon: 'error',
             timer: 1500,
             timerProgressBar: true

@@ -30,7 +30,9 @@ export class TomasService {
   createToma(toma: Toma): Observable<Toma>{
     return this.http.post(`${url}/dog/toma/manage`, {
       name: toma.name,
-      session_id: toma.session_id
+      session_id: toma.session_id,
+      type: toma.type,
+
     }).pipe(
       map((data: Toma) => data)
     );
