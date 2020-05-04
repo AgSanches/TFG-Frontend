@@ -1,9 +1,10 @@
 <div *ngIf="toma; else loading">
 
+  <h3>
+    {{toma.type == 1?"Detección de cojera":"Comprobación características angulares"}}
+  </h3>
   <h2>{{toma.name}}</h2>
-
   <app-toma-data [toma]="toma"></app-toma-data>
-
   <app-observation-box [observation]="toma.conclusion_expert"></app-observation-box>
   <app-conclusion-box [conclusion]="toma.conclusion_ia"></app-conclusion-box>
 </div>

@@ -14,12 +14,18 @@ export class TomaDataComponent implements OnInit {
   videos: string[] = [];
   sensors: string[] = [];
   play: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  message: string;
 
   constructor() { }
 
   ngOnInit(): void {
     this.videos = [this.toma.video_front, this.toma.video_middle, this.toma.video_back].filter(value => value != null);
     this.sensors = [this.toma.sensor_data_front, this.toma.sensor_data_back].filter(value => value != null);
+
+    this.message = `La toma no cuenta con los elementos requeridos,
+    actualmente cuenta con ${this.videos.length} videos y debe contar con almenos 1,
+    además cuenta con ${this.sensors.length} archivos en relación con los sensores
+    y tienen que existir ambos archivos.`
   }
 
   togglePlay(play: boolean){
