@@ -1,8 +1,17 @@
 <div class="row justify-content-center" *ngIf="sensors.length == 2 && videos.length > 0 ; else nodata">
-
   <div class="col-12">
-    <button class="button button-success" (click)="togglePlay(true)">Reproducir</button>
-    <button class="button button-danger ml-0 ml-sm-1" (click)="togglePlay(false)">Pausar</button>
+    <button class="button button-success" (click)="togglePlay(true)">Reproducir datos</button>
+    <button class="button button-danger ml-0 ml-sm-1" (click)="togglePlay(false)">Pausar datos</button>
+
+    <button class="button ml-0 ml-sm-1"
+            [class.button-success]="showAnglesGraphs && showLamelessGraphs"
+            (click)="showGraphs(true, true)">Mostrar ambas gráficas</button>
+    <button class="button ml-0 ml-sm-1"
+            [class.button-success]="showLamelessGraphs"
+            (click)="showGraphs(true, false)">Gráfica cojera</button>
+    <button class="button ml-0 ml-sm-1"
+            [class.button-success]="showAnglesGraphs"
+            (click)="showGraphs(false, true)">Gráfica características angulares</button>
   </div>
 
   <app-toma-videos class="col-12"
@@ -10,11 +19,24 @@
                    [videos]="videos">
   </app-toma-videos>
 
-  <app-toma-sensors class="col-12 col-md-6 col-lg-12"
-    [tomaId]="toma.id"
-    [sensors]="sensors"
-    [observable]="play.asObservable()">
+  <div class="col-12">
+    <h3>Gráficas</h3>
+
+  </div>
+
+  <app-toma-sensors class="col-12 col-md-6 col-lg-12" *ngIf="showLamelessGraphs"
+                    [tomaId]="toma.id"
+                    [sensors]="sensors"
+                    [observable]="play.asObservable()">
   </app-toma-sensors>
+
+  <app-toma-angles class="col-12 col-md-6 col-lg-12" *ngIf="showAnglesGraphs"
+                   [tomaId]="toma.id"
+                   [sensors]="sensors"
+                   [observable]="play.asObservable()">
+  </app-toma-angles>
+
+
 
 </div>
 

@@ -16,6 +16,9 @@ export class TomaDataComponent implements OnInit {
   play: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   message: string;
 
+  showLamelessGraphs: boolean = false;
+  showAnglesGraphs: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -37,4 +40,8 @@ export class TomaDataComponent implements OnInit {
     });
   }
 
+  showGraphs(lameless: boolean, angles: boolean) {
+    this.showLamelessGraphs = lameless;
+    this.showAnglesGraphs = angles;
+  }
 }
