@@ -42,8 +42,8 @@ export class TomaAnglesComponent implements OnInit {
 
     this.tomasService.readSensor(this.tomaId).subscribe(value => {
       this.labels.push(...value.labels);
-      this.upperSensor.push(...value.data.front_data);
-      this.lowerSensor.push(...value.data.back_data);
+      this.upperSensor.push(...value.data.sensor_data_foot_upper);
+      this.lowerSensor.push(...value.data.sensor_data_foot_lower);
     });
 
     if(this.observable != null){
