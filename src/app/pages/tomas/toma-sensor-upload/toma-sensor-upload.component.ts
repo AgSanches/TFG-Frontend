@@ -12,6 +12,8 @@ export class TomaSensorUploadComponent implements OnInit {
 
   frontSensorFile: File;
   backSensorFile: File;
+  upperFootSensorFile: File;
+  lowerFootSensorFile: File;
 
   @Input() toma: Observable<Toma>;
   @Output() fileEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -25,8 +27,11 @@ export class TomaSensorUploadComponent implements OnInit {
 
   ngOnInit(): void {
     this.toma.subscribe(value => {
-      if (value && this.frontSensorFile || this.backSensorFile){
-        this.tomasService.uploadSensor(value.id, this.frontSensorFile, this.backSensorFile).subscribe(
+      if (value && this.frontSensorFile || this.backSensorFile || this.upperFootSensorFile || this.lowerFootSensorFile){
+        this.tomasService.uploadSensor(
+          value.id,
+          this.frontSensorFile, this.backSensorFile,
+          this.upperFootSensorFile, this.lowerFootSensorFile).subscribe(
           () => {
           this.message = "Archivos de los sensores subidos correctamente.";
           this.status = true;
@@ -42,11 +47,19 @@ export class TomaSensorUploadComponent implements OnInit {
     })
   }
 
-  checkSensor(file: FileList, front: boolean) {
-    if (front){
-      this.frontSensorFile = file[0];
-    } else {
-      this.backSensorFile = file[0];
+  checkSensor(file: FileList, position: number) {
+    switch (position) {
+      case 0:
+        this.frontSensorFile = file[0];
+        break;
+      case 1:
+        this.backSensorFile = file[0];
+        break;
+      case 2:
+        this.upperFootSensorFile = file[0];
+        break;
+      case 3:
+        this.lowerFootSensorFile = file[0];
     }
   }
 }

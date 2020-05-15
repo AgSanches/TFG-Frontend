@@ -8,7 +8,7 @@
 
 <div class="col-12 mt-2">
   <label class="custom-file col-12 bg-main mr-2">
-    <input type="file" class="d-none" accept="text/txt" (change)="checkSensor($event.target.files,true)">
+    <input type="file" class="d-none" accept="text/txt" (change)="checkSensor($event.target.files,0)">
     <p class="py-2">Subir Sensor delantero<i class="fas fa-file-excel ml-1"></i></p>
   </label>
 
@@ -19,10 +19,30 @@
 
 <div class="col-12 mt-2">
   <label class="custom-file col-12 bg-main">
-    <input type="file" class="d-none" accept="text/txt" (change)="checkSensor($event.target.files, false)">
+    <input type="file" class="d-none" accept="text/txt" (change)="checkSensor($event.target.files, 1)">
     <p class="py-2"> Subir Sensor trasero <i class="far fa-file-excel ml-1"></i></p>
   </label>
   <div *ngIf="backSensorFile">
     <app-toma-file-description [file]="backSensorFile"></app-toma-file-description>
+  </div>
+</div>
+
+<div class="col-12 mt-2">
+  <label class="custom-file col-12 bg-main">
+    <input type="file" class="d-none" accept="text/txt" (change)="checkSensor($event.target.files, 2)">
+    <p class="py-2"> Subir Sensor superior de la pierna <i class="fas fa-file-excel ml-1"></i></p>
+  </label>
+  <div *ngIf="upperFootSensorFile">
+    <app-toma-file-description [file]="upperFootSensorFile"></app-toma-file-description>
+  </div>
+</div>
+
+<div class="col-12 mt-2">
+  <label class="custom-file col-12 bg-main">
+    <input type="file" class="d-none" accept="text/txt" (change)="checkSensor($event.target.files, 3)">
+    <p class="py-2"> Subir Sensor inferior de la pierna <i class="far fa-file-excel ml-1"></i></p>
+  </label>
+  <div *ngIf="lowerFootSensorFile">
+    <app-toma-file-description [file]="lowerFootSensorFile"></app-toma-file-description>
   </div>
 </div>

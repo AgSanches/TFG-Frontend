@@ -30,23 +30,30 @@ export class TomasService {
   createToma(toma: Toma): Observable<Toma>{
     return this.http.post(`${url}/dog/toma/manage`, {
       name: toma.name,
-      session_id: toma.session_id,
-      type: toma.type,
-
+      session_id: toma.session_id
     }).pipe(
       map((data: Toma) => data)
     );
   }
 
-  uploadSensor(tomaId: number, sensorFront: File, sensorBack: File){
+  uploadSensor(tomaId: number, sensorFront: File, sensorBack: File, upperFootSensor:File, lowerFootSensor:File){
     const formData:FormData = new FormData();
     const headers = new HttpHeaders();
 
     if (sensorFront){
       formData.set('sensor_data_front', sensorFront);
     }
+
     if (sensorBack) {
       formData.set('sensor_data_back', sensorBack);
+    }
+
+    if (upperFootSensor){
+      formData.set('sensor_data_foot_upper', upperFootSensor);
+    }
+
+    if (lowerFootSensor) {
+      formData.set('sensor_data_foot_lower', lowerFootSensor);
     }
 
     headers.set('Content-Type', 'multipart/form-data');

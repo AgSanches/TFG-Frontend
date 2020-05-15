@@ -1,7 +1,6 @@
 export interface Toma {
   id?: number,
   name: string,
-  type: number,
   session_id: number,
   conclusion_ia?: string,
   conclusion_expert?: string,
@@ -12,4 +11,6 @@ export interface Toma {
   video_back?: string,
   sensor_data_front?: string,
   sensor_data_back?: string,
+  sensor_data_foot_upper?: string,
+  sensor_data_foot_lower?: string,
 }
