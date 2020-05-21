@@ -7,7 +7,7 @@ import {Component,Input, OnInit} from '@angular/core';
 })
 export class TomaFileDescriptionComponent implements OnInit {
 
-  @Input() file: File;
+  @Input() fileName: string;
 
   constructor(
 

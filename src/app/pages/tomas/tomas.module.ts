@@ -13,6 +13,7 @@ import {TomaSensorsComponent} from './toma-sensors/toma-sensors.component';
 import {TomaVideosComponent} from './toma-videos/toma-videos.component';
 import {ChartsModule} from 'ng2-charts';
 import { TomaAnglesComponent } from './toma-angles/toma-angles.component';
+import { TomaEditComponent } from './toma-edit/toma-edit.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TomaAnglesComponent } from './toma-angles/toma-angles.component';
     TomaFileDescriptionComponent,
     TomaSensorsComponent,
     TomaVideosComponent,
-    TomaAnglesComponent
+    TomaAnglesComponent,
+    TomaEditComponent
   ],
   imports: [
     CommonModule,

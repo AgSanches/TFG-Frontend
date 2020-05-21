@@ -1,0 +1,24 @@
+<div class="mt-2" *ngIf="toma; else loading">
+
+  <h2 class="w-100 p-2 text-center">Editar Toma</h2>
+
+  <div class="container">
+    <form [formGroup]="tomaForm" class="col-12 row text-center text-white justify-content-around" (ngSubmit)="submitForm(tomaForm.value)">
+
+      <div class="col-12">
+        <input class="col-12 form-control" type="text" placeholder="Nombre" formControlName="name">
+      </div>
+
+      <app-toma-sensor-upload class="col-12" [toma]="toma"></app-toma-sensor-upload>
+      <app-toma-video-upload class="col-12" [toma]="toma"></app-toma-video-upload>
+
+      <button class="button col-12 col-md-2" [class.button-success]="tomaForm.valid" [disabled]="!tomaForm.valid">Aceptar</button>
+      <button class="button button-danger col-12 col-md-2" (click)="goBack()">Cancelar</button>
+
+    </form>
+  </div>
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

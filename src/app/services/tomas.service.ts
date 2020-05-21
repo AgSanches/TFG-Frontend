@@ -87,4 +87,10 @@ export class TomasService {
   readSensor(id:number): Observable<any> {
     return this.http.get(`${url}/dog/toma/sensor/${id}`)
   }
+
+  updateToma(toma: Toma): Observable<Toma> {
+    return this.http.put<Toma>(`${url}/dog/toma/${toma.id}`, {
+      name: toma.name
+    })
+  }
 }

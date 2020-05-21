@@ -38,7 +38,8 @@ export class CreateTomaComponent implements OnInit {
         this.session = value;
         this.tomaForm = new FormGroup({
           name: new FormControl("", [Validators.required, Validators.maxLength(255)]),
-          session_id: new FormControl(params['id']),});
+          session_id: new FormControl(params['id']),
+        });
       },
         () => {
         this.location.back();
