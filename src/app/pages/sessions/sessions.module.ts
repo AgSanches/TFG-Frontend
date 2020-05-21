@@ -8,6 +8,7 @@ import {SharedModule} from '../../shared/shared.module';
 import {CreateTomaComponent} from './create-toma/create-toma.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TomasModule} from '../tomas/tomas.module';
+import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
@@ -16,12 +17,13 @@ import {TomasModule} from '../tomas/tomas.module';
     SessionMainComponent,
     CreateTomaComponent
   ],
-  imports: [
-    CommonModule,
-    SessionsRoutingModule,
-    SharedModule,
-    ReactiveFormsModule,
-    TomasModule
-  ]
+    imports: [
+        CommonModule,
+        SessionsRoutingModule,
+        SharedModule,
+        ReactiveFormsModule,
+        TomasModule,
+        SweetAlert2Module
+    ]
 })
 export class SessionsModule { }

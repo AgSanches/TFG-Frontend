@@ -6,6 +6,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {SessionsService} from '../../../services/sessions.service';
 import {SortService} from '../../../services/sort.service';
 import {TomasService} from '../../../services/tomas.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-session-main',
@@ -13,6 +14,19 @@ import {TomasService} from '../../../services/tomas.service';
   styleUrls: ['./session-main.component.scss']
 })
 export class SessionMainComponent implements OnInit {
+
+  swalCreateToma = {
+    title: 'Elige un nombre',
+    input: 'text',
+    inputAttributes: {
+      placeholder: 'Nombre'
+    },
+    showCancelButton: true,
+    cancelButtonText: 'Cancelar',
+    cancelButtonColor: '#FF8282',
+    confirmButtonText: 'Crear',
+    confirmButtonColor: '#91d7c3',
+  }
 
   tomaSource: BehaviorSubject<Toma[]>;
 
@@ -72,4 +86,27 @@ export class SessionMainComponent implements OnInit {
     this.tomas = tomas;
   }
 
+  createToma(name: string) {
+    const toma: Toma = {
+      name: name,
+      session_id: this.session.id
+    }
+
+    this.tomasService.createToma(toma).subscribe(toma => {
+      Swal.fire({
+        text: "Toma creada",
+        timerProgressBar: true,
+        timer: 1500,
+        icon:'success'
+      });
+      console.log(toma);
+    }, () => {
+      Swal.fire({
+        text: "Ha ocurrido un error al crear la toma",
+        timerProgressBar: true,
+        timer: 1500,
+        icon:'error'
+      });
+    })
+  }
 }
