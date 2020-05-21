@@ -14,7 +14,7 @@
       class="button button-primary mt-2 d-block"
       [swal]="swalCreateToma"
       (confirm)="createToma($event)"
-    >Añadir sesión</button>
+    >Añadir Toma</button>
 
     <app-data-box [routerTarget]="'tomas/toma'" [input]="toma" *ngFor="let toma of tomas"></app-data-box>
     <app-page-selection [pageSize]="limit" [itemsObservable]="tomaSource.asObservable()" (currentPageEmitter)="sliceTomas($event)" ></app-page-selection>
@@ -23,7 +23,7 @@
       class="button button-primary mt-2 d-block"
       [swal]="swalCreateToma"
       (confirm)="createToma($event)"
-    >Añadir sesión</button>
+    >Añadir Toma</button>
 
     <app-observation-box [observation]="session.conclusion_expert"></app-observation-box>
     <app-conclusion-box [conclusion]="session.conclusion_ia" ></app-conclusion-box>
@@ -34,7 +34,7 @@
       class="button button-primary mt-2 d-block"
       [swal]="swalCreateToma"
       (confirm)="createToma($event)"
-    >Añadir sesión</button>
+    >Añadir Toma</button>
 
     <div class="alert alert-danger mt-2" >
       No existen tomas
