@@ -14,24 +14,51 @@
   <div *ngIf="toma.video_front">
     <app-toma-file-description [fileName]="toma.video_front"></app-toma-file-description>
   </div>
+
+  <div *ngIf="frontVideo">
+    <app-toma-file-description
+      [fileName]="frontVideo.name"
+      [message]="'Archivo a subir: '"
+    ></app-toma-file-description>
+  </div>
 </div>
 
 <div class="col-12 mt-2">
   <label class="custom-file col-12 bg-main">
-    <input type="file" class="d-none" accept="video/*" (change)="checkVideo($event.target.files,2)">
+    <input type="file" class="d-none" accept="video/*" (change)="checkVideo($event.target,2)">
     <p class="py-2">Subir Video lateral <i class="fas fa-file-video ml-1"></i></p>
   </label>
   <div *ngIf="toma.video_middle">
     <app-toma-file-description [fileName]="toma.video_middle"></app-toma-file-description>
   </div>
+
+  <div *ngIf="middleVideo">
+    <app-toma-file-description
+      [fileName]="middleVideo.name"
+      [message]="'Archivo a subir: '"
+    ></app-toma-file-description>
+  </div>
 </div>
 
 <div class="col-12 my-2">
   <label class="custom-file col-12 bg-main">
-    <input type="file" class="d-none" accept="video/mp4"(change)="checkVideo($event.target.files,3)">
+    <input type="file" class="d-none" accept="video/mp4"(change)="checkVideo($event.target,3)">
     <p class="py-2">Subir Video trasero <i class="fas fa-file-video ml-1"></i></p>
   </label>
   <div *ngIf="toma.video_back">
     <app-toma-file-description [fileName]="toma.video_back"></app-toma-file-description>
   </div>
+
+  <div *ngIf="backVideo">
+    <app-toma-file-description
+      [fileName]="backVideo.name"
+      [message]="'Archivo a subir: '"
+    ></app-toma-file-description>
+  </div>
+</div>
+
+<div class="col-12 mt-2">
+  <button class="button button-success"
+          (click)="uploadFile()"
+          type="button">Subir videos</button>
 </div>

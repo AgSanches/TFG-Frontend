@@ -75,7 +75,7 @@ export class TomasService {
     }
 
     headers.set('Content-Type', 'multipart/form-data');
-    return this.http.post(`${url}/dog/toma/video/upload/${tomaId}`, formData, {headers})
+    return this.http.post<Toma>(`${url}/dog/toma/video/upload/${tomaId}`, formData, {headers})
   }
 
   getToma(id:number): Observable<Toma> {

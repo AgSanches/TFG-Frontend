@@ -45,7 +45,7 @@ export class TomaEditComponent implements OnInit {
   submitForm(toma: Toma){
     if (this.tomaForm.valid){
       this.tomasService.updateToma(toma, this.toma.id).subscribe((tomaUpdate) => {
-        this.route.navigate(['/sessions', tomaUpdate.session_id, 'tomas', 'toma', tomaUpdate.id]);
+        this.route.navigate(['/tomas', 'toma', tomaUpdate.id]);
         Swal.fire({
           title: "Toma actualizada",
           icon: 'success',

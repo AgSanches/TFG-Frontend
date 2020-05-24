@@ -1,4 +1,4 @@
-<div *ngIf="toma; else loading">
+<div class="container-fluid mt-3" *ngIf="toma; else loading">
   <h2>{{toma.name}}</h2>
   <button class="button button-success mb-2"
           [routerLink]="['/tomas','toma','edit',toma.id]">
