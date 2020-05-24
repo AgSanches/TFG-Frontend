@@ -10,6 +10,7 @@ const appRoutes: Routes = [
   { path: 'users', canActivate: [CheckAdminGuard], loadChildren: () => import('../pages/users/users.module').then(m => m.UsersModule)},
   { path: 'dogs', canActivate: [CheckLoginGuard] ,loadChildren: () => import('../pages/dogs/dogs.module').then(m => m.DogsModule)},
   { path: 'sessions', canActivate: [CheckLoginGuard], loadChildren: () => import('../pages/sessions/sessions.module').then(m => m.SessionsModule)},
+  { path: 'tomas', loadChildren: () => import('../pages/tomas/tomas.module').then(m => m.TomasModule)},
   { path: '**', redirectTo: ''}
 ];
 

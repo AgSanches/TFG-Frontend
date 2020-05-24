@@ -1,5 +1,9 @@
 <div *ngIf="toma; else loading">
   <h2>{{toma.name}}</h2>
+  <button class="button button-success mb-2"
+          [routerLink]="['/tomas','toma','edit',toma.id]">
+    Editar Toma
+  </button>
   <app-toma-data [toma]="toma"></app-toma-data>
   <app-observation-box [observation]="toma.conclusion_expert"></app-observation-box>
   <app-conclusion-box [conclusion]="toma.conclusion_ia"></app-conclusion-box>

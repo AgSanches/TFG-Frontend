@@ -5,7 +5,6 @@
   {{message}}
 </div>
 
-
 <div class="col-12 mt-2">
   <label class="custom-file col-12 bg-main mr-2">
     <input type="file" class="d-none" accept="text/txt" (change)="checkSensor($event.target,0)">
@@ -14,6 +13,13 @@
 
   <div *ngIf="toma.sensor_data_front">
     <app-toma-file-description [fileName]="toma.sensor_data_front"></app-toma-file-description>
+  </div>
+
+  <div *ngIf="frontSensorFile">
+    <app-toma-file-description
+      [fileName]="frontSensorFile.name"
+      [message]="'Archivo a subir: '"
+    ></app-toma-file-description>
   </div>
 </div>
 
@@ -25,6 +31,13 @@
   <div *ngIf="toma.sensor_data_back">
     <app-toma-file-description [fileName]="toma.sensor_data_back"></app-toma-file-description>
   </div>
+
+  <div *ngIf="backSensorFile">
+    <app-toma-file-description
+      [fileName]="backSensorFile.name"
+      [message]="'Archivo a subir: '"
+    ></app-toma-file-description>
+  </div>
 </div>
 
 <div class="col-12 mt-2">
@@ -34,6 +47,13 @@
   </label>
   <div *ngIf="toma.sensor_data_foot_upper">
     <app-toma-file-description [fileName]="toma.sensor_data_foot_upper"></app-toma-file-description>
+  </div>
+
+  <div *ngIf="upperFootSensorFile">
+    <app-toma-file-description
+      [fileName]="upperFootSensorFile.name"
+      [message]="'Archivo a subir: '"
+    ></app-toma-file-description>
   </div>
 </div>
 
@@ -45,4 +65,17 @@
   <div *ngIf="toma.sensor_data_foot_lower">
     <app-toma-file-description [fileName]="toma.sensor_data_foot_lower"></app-toma-file-description>
   </div>
+
+  <div *ngIf="lowerFootSensorFile">
+    <app-toma-file-description
+      [fileName]="lowerFootSensorFile.name"
+      [message]="'Archivo a subir: '"
+    ></app-toma-file-description>
+  </div>
+</div>
+
+<div class="col-12 mt-2">
+  <button class="button button-success"
+          (click)="uploadFile()"
+          type="button">Subir archivos sensores</button>
 </div>

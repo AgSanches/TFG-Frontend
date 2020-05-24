@@ -16,7 +16,7 @@
       (confirm)="createToma($event)"
     >Añadir Toma</button>
 
-    <app-data-box [routerTarget]="'tomas/toma'" [input]="toma" *ngFor="let toma of tomas"></app-data-box>
+    <app-data-box [routerTarget]="'/tomas/toma'" [input]="toma" *ngFor="let toma of tomas"></app-data-box>
     <app-page-selection [pageSize]="limit" [itemsObservable]="tomaSource.asObservable()" (currentPageEmitter)="sliceTomas($event)" ></app-page-selection>
 
     <button

@@ -11,10 +11,16 @@ import {TomasService} from '../../../services/tomas.service';
 export class TomaSensorUploadComponent implements OnInit {
 
 
+  frontSensorFile: File;
+  backSensorFile: File;
+  upperFootSensorFile: File;
+  lowerFootSensorFile: File;
+
   @Input() toma: Toma;
 
   message: string = "";
   status: boolean;
+  filesExists: boolean = false;
 
   constructor(
     private tomasService: TomasService
@@ -25,6 +31,50 @@ export class TomaSensorUploadComponent implements OnInit {
   }
 
   checkSensor(eventTarget: any, position: number) {
-    console.log(eventTarget);
+
+    const file = eventTarget.files[0]
+
+    switch (position) {
+      case 0:
+        this.frontSensorFile = file;
+        break;
+      case 1:
+        this.backSensorFile = file;
+        break;
+      case 2:
+        this.upperFootSensorFile = file;
+        break;
+      case 3:
+        this.lowerFootSensorFile = file;
+    }
+
+    this.filesExists = true;
   }
+
+  uploadFile(){
+    if (this.filesExists){
+      this.tomasService.uploadSensor(
+        this.toma.id,
+        this.frontSensorFile,
+        this.backSensorFile,
+        this.upperFootSensorFile,
+        this.lowerFootSensorFile ).subscribe(toma => {
+        this.toma = toma;
+
+        this.message = "Archivos subidos correctamente";
+        this.status = true;
+
+        this.lowerFootSensorFile = null;
+        this.upperFootSensorFile = null;
+        this.backSensorFile = null;
+        this.frontSensorFile = null;
+        this.filesExists = false;
+
+      }, error => {
+        this.message = `Ha ocurrido un problema al subir los archivos. ${error.error.message}`;
+        this.status = false;
+      });
+    }
+  }
+
 }

@@ -8,6 +8,7 @@ import {Component,Input, OnInit} from '@angular/core';
 export class TomaFileDescriptionComponent implements OnInit {
 
   @Input() fileName: string;
+  @Input() message: string = "Archivo actual: ";
 
   constructor(
 

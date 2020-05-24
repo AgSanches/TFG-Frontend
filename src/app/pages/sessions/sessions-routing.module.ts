@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: ':id', component: SessionComponent, children: [
       {path: '', component: SessionMainComponent},
       {path: 'crear-toma', component: CreateTomaComponent},
-      { path: 'tomas', loadChildren: () => import('../tomas/tomas.module').then(m => m.TomasModule)}
+
     ]
   }
 ];

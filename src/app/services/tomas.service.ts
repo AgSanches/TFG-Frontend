@@ -57,7 +57,7 @@ export class TomasService {
     }
 
     headers.set('Content-Type', 'multipart/form-data');
-    return this.http.post(`${url}/dog/toma/sensor/upload/${tomaId}`, formData, {headers})
+    return this.http.post<Toma>(`${url}/dog/toma/sensor/upload/${tomaId}`, formData, {headers})
   }
 
   uploadVideo(tomaId: number, videoFront: File, videoMiddle:File ,videoBack: File){
@@ -88,8 +88,8 @@ export class TomasService {
     return this.http.get(`${url}/dog/toma/sensor/${id}`)
   }
 
-  updateToma(toma: Toma): Observable<Toma> {
-    return this.http.put<Toma>(`${url}/dog/toma/${toma.id}`, {
+  updateToma(toma: Toma, id: number): Observable<Toma> {
+    return this.http.put<Toma>(`${url}/dog/toma/${id}`, {
       name: toma.name
     })
   }

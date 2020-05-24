@@ -44,9 +44,14 @@ export class TomaEditComponent implements OnInit {
 
   submitForm(toma: Toma){
     if (this.tomaForm.valid){
-      this.toma.name = toma.name;
-      this.tomasService.updateToma(this.toma).subscribe(() => {
-        this.route.navigate([]);
+      this.tomasService.updateToma(toma, this.toma.id).subscribe((tomaUpdate) => {
+        this.route.navigate(['/sessions', tomaUpdate.session_id, 'tomas', 'toma', tomaUpdate.id]);
+        Swal.fire({
+          title: "Toma actualizada",
+          icon: 'success',
+          timer: 1500,
+          timerProgressBar: true
+        });
       },() => {
         Swal.fire({
           title: "No se ha podido actualizar la toma",
@@ -54,7 +59,7 @@ export class TomaEditComponent implements OnInit {
           icon: 'error',
           timer: 1500,
           timerProgressBar: true
-        })
+        });
       })
     }
   }

@@ -92,14 +92,14 @@ export class SessionMainComponent implements OnInit {
       session_id: this.session.id
     }
 
-    this.tomasService.createToma(toma).subscribe(toma => {
+    this.tomasService.createToma(toma).subscribe(async (toma) => {
       Swal.fire({
         text: "Toma creada",
         timerProgressBar: true,
         timer: 1500,
         icon:'success'
       });
-      console.log(toma);
+      await this.router.navigate(['/tomas', "toma", "edit", toma.id])
     }, () => {
       Swal.fire({
         text: "Ha ocurrido un error al crear la toma",
