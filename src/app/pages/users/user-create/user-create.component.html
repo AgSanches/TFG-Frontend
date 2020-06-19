@@ -31,6 +31,19 @@
       </div>
 
       <div class="form-group">
+        <select name="role" class="form-control" [(ngModel)]="user.role"
+                #role="ngModel" [class.error-input]="role.touched && role.valid"
+        >
+          <option value="0" selected>Selecciona uno</option>
+          <option value="1">Administrador</option>
+          <option value="2">Usuario</option>
+        </select>
+        <p class="error-message" *ngIf="!email.valid && email.touched">
+          Introduce un email válido.
+        </p>
+      </div>
+
+      <div class="form-group">
         <input type="email" class="form-control" name="email" placeholder="Email" #email="ngModel"
                [(ngModel)]="user.email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                [class.error-input]="!email.valid && email.touched"
@@ -60,7 +73,9 @@
         </p>
       </div>
 
-      <button class="button mr-md-2" [class.button-success]="registerForm.valid" [disabled]="!registerForm.valid">Registrarse</button>
+
+
+      <button class="button mr-md-2" [class.button-success]="registerForm.valid" [disabled]="!registerForm.valid">Crear</button>
       <button class="button button-danger" (click)="goBack()">Volver</button>
 
     </form>

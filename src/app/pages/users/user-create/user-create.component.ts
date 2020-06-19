@@ -27,7 +27,8 @@ export class UserCreateComponent implements OnInit {
       name: "",
       surname: "",
       password: "",
-      email: ""
+      email: "",
+      role: 0
     };
   }
 

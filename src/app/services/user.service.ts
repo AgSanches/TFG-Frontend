@@ -24,7 +24,8 @@ export class UserService {
       "email": user.email,
       "password": user.password,
       "name" : user.name,
-      "surname": user.surname
+      "surname": user.surname,
+      "role": user.role
     }, {headers: this.headers});
   }
 
