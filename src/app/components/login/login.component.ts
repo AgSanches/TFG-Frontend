@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../services/authentication.service';
-import {Location} from '@angular/common';
 import {Router} from '@angular/router';
 
 @Component({
@@ -18,7 +17,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
-    private location: Location,
     private route: Router,
   ) {
 
@@ -48,10 +46,5 @@ export class LoginComponent implements OnInit {
 
       }
     );
-
-  }
-
-  goBack() {
-    this.location.back();
   }
 }
