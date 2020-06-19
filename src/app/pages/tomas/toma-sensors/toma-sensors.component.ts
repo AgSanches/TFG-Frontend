@@ -31,7 +31,7 @@ export class TomaSensorsComponent implements OnInit {
     {data: [], label: 'Datos sensores traseros'}
   ];
 
-  interval;
+  private interval;
 
   constructor(
     private tomasService: TomasService

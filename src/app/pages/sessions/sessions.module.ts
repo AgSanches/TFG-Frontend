@@ -5,7 +5,6 @@ import { SessionsRoutingModule } from './sessions-routing.module';
 import {SessionComponent} from './session/session.component';
 import {SessionMainComponent} from './session-main/session-main.component';
 import {SharedModule} from '../../shared/shared.module';
-import {CreateTomaComponent} from './create-toma/create-toma.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TomasModule} from '../tomas/tomas.module';
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
@@ -14,8 +13,7 @@ import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 @NgModule({
   declarations: [
     SessionComponent,
-    SessionMainComponent,
-    CreateTomaComponent
+    SessionMainComponent
   ],
     imports: [
         CommonModule,
