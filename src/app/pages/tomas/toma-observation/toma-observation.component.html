@@ -1,0 +1,40 @@
+<div class="my-2 observation px-2 py-4 text-white">
+
+  <div *ngIf="!edit ; else editObservation">
+    <app-observation-box
+      [observation]="toma.conclusion_expert">
+    </app-observation-box>
+
+    <button
+      class="button button-success mt-2 d-block w-100"
+      (click)="activateEdit()"
+    >Editar</button>
+  </div>
+
+  <ng-template #editObservation>
+    <div class="p-1">
+      <h3>Editar observación</h3>
+      <form
+        class="col-12 row text-center text-white justify-content-center"
+        [formGroup]="tomaObservationForm"
+        (ngSubmit)="modifyObservation(tomaObservationForm.value)"
+      >
+        <div class="form-group col-12 text-left">
+          <label class="col-12">
+            <textarea formControlName="observation" class="form-control"></textarea>
+          </label>
+        </div>
+
+        <div class="col-12">
+          <button class="button button-success mr-2">Confirmar</button>
+          <button
+            class="button button-danger"
+            (click)="desactivateEdit()"
+            type="button"
+          >Cancelar</button>
+        </div>
+      </form>
+
+    </div>
+  </ng-template>
+</div>
