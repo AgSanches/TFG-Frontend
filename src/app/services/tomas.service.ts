@@ -3,7 +3,6 @@ import { url } from './variables';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Toma} from '../models/Toma';
-import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,23 +16,14 @@ export class TomasService {
   }
 
   getTomasByName(id: number, name: string): Observable<Toma[]> {
-    return this.http.get(`${url}/dog/toma/${id}/${name}`).pipe(
-      map((tomas:any) => tomas.tomas ),
-      map((tomas:Toma[]) => {
-        return tomas.map((toma:Toma) => {
-          return toma;
-        })
-      })
-    )
+    return this.http.get<Toma[]>(`${url}/dog/toma/${id}/${name}`);
   }
 
   createToma(toma: Toma): Observable<Toma>{
-    return this.http.post(`${url}/dog/toma/manage`, {
+    return this.http.post<Toma>(`${url}/dog/toma/manage`, {
       name: toma.name,
       session_id: toma.session_id
-    }).pipe(
-      map((data: Toma) => data)
-    );
+    });
   }
 
   uploadSensor(tomaId: number, sensorFront: File, sensorBack: File, upperFootSensor:File, lowerFootSensor:File){
@@ -79,18 +69,18 @@ export class TomasService {
   }
 
   getToma(id:number): Observable<Toma> {
-    return this.http.get(`${url}/dog/toma/${id}`).pipe(
-      map((toma: Toma) => toma )
-    )
+    return this.http.get<Toma>(`${url}/dog/toma/${id}`)
   }
 
   readSensor(id:number): Observable<any> {
     return this.http.get(`${url}/dog/toma/sensor/${id}`)
   }
 
-  updateToma(toma: Toma, id: number): Observable<Toma> {
+  updateToma(id: number, name: string = null, observation:string = null ): Observable<Toma> {
     return this.http.put<Toma>(`${url}/dog/toma/${id}`, {
-      name: toma.name
+      name: name,
+      conclusion_expert: observation
     })
   }
+
 }

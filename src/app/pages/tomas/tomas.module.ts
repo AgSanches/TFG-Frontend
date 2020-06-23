@@ -14,6 +14,7 @@ import {TomaVideosComponent} from './toma-videos/toma-videos.component';
 import {ChartsModule} from 'ng2-charts';
 import { TomaAnglesComponent } from './toma-angles/toma-angles.component';
 import { TomaEditComponent } from './toma-edit/toma-edit.component';
+import { TomaObservationComponent } from './toma-observation/toma-observation.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TomaEditComponent } from './toma-edit/toma-edit.component';
     TomaSensorsComponent,
     TomaVideosComponent,
     TomaAnglesComponent,
-    TomaEditComponent
+    TomaEditComponent,
+    TomaObservationComponent,
   ],
   imports: [
     CommonModule,

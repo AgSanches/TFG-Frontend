@@ -17,8 +17,8 @@ export class TomaDataComponent implements OnInit {
   play: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   message: string;
 
-  showLamelessGraphs: boolean = true;
-  showAnglesGraphs: boolean = true;
+  showLamelessGraphs: boolean = false;
+  showAnglesGraphs: boolean = false;
 
   constructor() { }
 

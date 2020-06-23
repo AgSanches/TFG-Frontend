@@ -10,7 +10,7 @@
     Volver a la sesión
   </button>
   <app-toma-data [toma]="toma"></app-toma-data>
-  <app-observation-box [observation]="toma.conclusion_expert"></app-observation-box>
+  <app-toma-observation [toma]="toma"></app-toma-observation>
   <app-conclusion-box [conclusion]="toma.conclusion_ia"></app-conclusion-box>
 </div>
 

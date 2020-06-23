@@ -1,12 +1,9 @@
-<div class="my-2 observation px-2 py-4 text-white">
-  <h3>Observación general</h3>
-  <div *ngIf="observation; else empty">
-    {{observation}}
-  </div>
+<h3>Observación general</h3>
 
-  <ng-template #empty>
-    No se ha añadido ninguna observación
-  </ng-template>
-
-  <button class="button button-success mt-2 d-block w-100">Editar</button>
+<div *ngIf="observation; else empty">
+  {{observation}}
 </div>
+
+<ng-template #empty>
+  No se ha añadido ninguna observación
+</ng-template>
