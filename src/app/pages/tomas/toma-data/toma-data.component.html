@@ -1,4 +1,4 @@
-<div class="row justify-content-center">
+<div class="row justify-content-center" *ngIf="videos.length > 0; else novideo">
   <div class="col-12">
     <button class="button button-success" (click)="togglePlay(true)">Reproducir datos</button>
     <button class="button button-danger ml-0 ml-sm-1" (click)="togglePlay(false)">Pausar datos</button>
@@ -19,29 +19,15 @@
             [class.button-success]="showAnglesGraphs"
             (click)="showGraphs(false, true)"
             *ngIf="sensorsAngles.length == 2"
-    >
-      Gráfica características angulares</button>
-
+    >Gráfica características angulares</button>
 
   </div>
 
-  <div>
-    <div *ngIf="videos.length > 0; else novideo">
-      <app-toma-videos class="col-12"
-                       [tomaId]="toma.id"
-                       [videos]="videos">
-      </app-toma-videos>
-    </div>
+  <app-toma-videos class="col-12" [tomaId]="toma.id" [videos]="videos"></app-toma-videos>
 
-    <ng-template #novideo>
-      <app-error [message]="'La toma no cuenta con videos'"></app-error>
-    </ng-template>
-  </div>
-
-  <div *ngIf="sensorsAngles.length == 2 || sensorsLameness.length == 2; else nosensor">
+  <div class="col-12 mt-2" *ngIf="sensorsAngles.length == 2 || sensorsLameness.length == 2; else nosensor">
     <h3>Gráficas</h3>
   </div>
-
 
   <ng-template #nosensor>
     <app-error [message]="'La toma no cuenta con datos de los sensores'"></app-error>
@@ -60,3 +46,7 @@
   </app-toma-angles>
 
 </div>
+
+<ng-template #novideo>
+  <app-error [message]="'La toma no cuenta con videos, añada alguno'"></app-error>
+</ng-template>
