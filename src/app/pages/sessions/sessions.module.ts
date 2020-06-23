@@ -8,12 +8,14 @@ import {SharedModule} from '../../shared/shared.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TomasModule} from '../tomas/tomas.module';
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
+import { SessionObservationComponent } from './session-observation/session-observation.component';
 
 
 @NgModule({
   declarations: [
     SessionComponent,
-    SessionMainComponent
+    SessionMainComponent,
+    SessionObservationComponent
   ],
     imports: [
         CommonModule,

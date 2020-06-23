@@ -25,7 +25,7 @@
       (confirm)="createToma($event)"
     >Añadir Toma</button>
 
-    <app-observation-box [observation]="session.conclusion_expert"></app-observation-box>
+    <app-session-observation [session]="session"></app-session-observation>
     <app-conclusion-box [conclusion]="session.conclusion_ia" ></app-conclusion-box>
   </div>
 
