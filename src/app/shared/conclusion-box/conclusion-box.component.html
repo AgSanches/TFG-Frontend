@@ -1,7 +1,9 @@
 <div class="my-2 observation p-2 text-white">
   <h3 class="mb-2">Conclusión Sesión</h3>
   <div *ngIf="conclusion; else empty">
-    {{conclusion}}
+    La red comunica que el canino {{outputString}}.
+    <p>Salida {{conclusion}}</p>
+    <span>** 0 indica sano y 1 con cojera.</span>
   </div>
 
   <ng-template #empty>

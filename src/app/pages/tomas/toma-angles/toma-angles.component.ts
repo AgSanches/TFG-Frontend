@@ -15,8 +15,7 @@ export class TomaAnglesComponent implements OnInit {
   @Input() observable: Observable<boolean>;
 
   labels: Array<number> = [];
-  upperSensor: Array<number> = [];
-  lowerSensor: Array<number> = [];
+  angles: Array<number> = [];
 
   public barChartOptions = {
     scaleShowVerticalLines: false,
@@ -42,8 +41,7 @@ export class TomaAnglesComponent implements OnInit {
 
     this.tomasService.readSensor(this.tomaId).subscribe(value => {
       this.labels.push(...value.labels);
-      this.upperSensor.push(...value.data.sensor_data_foot_upper);
-      this.lowerSensor.push(...value.data.sensor_data_foot_lower);
+      this.angles.push(...value.data.angles);
     });
 
     if(this.observable != null){
@@ -52,7 +50,7 @@ export class TomaAnglesComponent implements OnInit {
           this.interval = setInterval(() => {
             const video = $('video').get(0);
             const limit = parseInt(String(video.currentTime * (this.labels.length/video.duration)))
-            this.barChartData[0].data = this.upperSensor.slice(0, limit);
+            this.barChartData[0].data = this.angles.slice(0, limit);
 
             if (video.currentTime == video.duration){
               clearInterval(this.interval);
