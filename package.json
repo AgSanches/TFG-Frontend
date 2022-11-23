@@ -53,7 +53,7 @@
     "jquery": "^3.4.1",
     "jw-angular-pagination": "^1.1.0",
     "jw-paginate": "^1.0.4",
-    "karma": "~4.3.0",
+    "karma": "~6.4.1",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~2.0.1",
